@@ -111,7 +111,7 @@ in
             notification = false;
           }
           {
-            command = "setxkbmap us intl";
+            command = "setxkbmap us";
             always = true;
             notification = false;
           }

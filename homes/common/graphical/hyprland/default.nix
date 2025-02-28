@@ -160,7 +160,7 @@ in
           };
           # sensitivity = 1;  # Commented out as -1.0 - 1.0 range
           kb_layout = "us";
-          kb_variant = "intl";
+          kb_variant = "";
         };
 
         # xwayland options

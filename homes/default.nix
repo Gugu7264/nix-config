@@ -12,7 +12,7 @@ in
   "pie" = home-manager.lib.homeManagerConfiguration {
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
     extraSpecialArgs = {
-      username = "abel.chartier";
+      username = "gurvan.biguet-kerloch";
       rootPath = rootPath;
       stateVersion = "25.05";
       inherit inputs outputs;

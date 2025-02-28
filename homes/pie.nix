@@ -43,8 +43,8 @@
     git = {
       enable = true;
       editor = "nvim";
-      username = "abel.chartier";
-      email = "abel.chartier@epita.fr";
+      username = "gurvan.biguet-kerloch";
+      email = "gurvan.biguet-kerloch@epita.fr";
     };
   };
 

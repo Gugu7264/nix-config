@@ -2,6 +2,7 @@
   lib,
   config,
   inputs,
+  pkgs,
   ...
 }:
 with lib; let
@@ -21,6 +22,10 @@ in {
       defaultEditor = true;
       settings.vim = {
         lineNumberMode = "relNumber";
+
+        luaConfigPost = ''
+          vim.filetype.add({extension = {tig = "tiger", tih = "tiger"}})
+        '';
 
         lsp = {
           enable = true;
@@ -56,6 +61,11 @@ in {
           };
           markdown.enable = true;
           bash.enable = true;
+        };
+
+        treesitter = {
+          enable = true;
+          grammars = [pkgs.tree-sitter-grammars.tree-sitter-tiger];
         };
 
         git = {

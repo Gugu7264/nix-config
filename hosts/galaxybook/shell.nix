@@ -1,8 +1,8 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     zsh-powerlevel10k # theme
-    zsh-syntax-highlighting
-    zsh-autosuggestions
+    # zsh-syntax-highlighting
+    # zsh-autosuggestions
   ];
 
   programs = {
@@ -14,7 +14,7 @@
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
       '';
       ohMyZsh = {
-        enable = true;
+        enable = false;
         plugins = ["git colored-man-pages"];
       };
       shellAliases = {

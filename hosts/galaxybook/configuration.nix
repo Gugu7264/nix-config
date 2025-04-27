@@ -4,13 +4,14 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.default
     ./packages.nix
-    ./shell.nix
     ../../modules/neovim.nix
   ];
 
@@ -158,6 +159,13 @@
     description = "Gurvan BK";
     extraGroups = ["networkmanager" "wheel" "input" "video" "docker" "dialout" "plugdev"];
     shell = pkgs.zsh;
+  };
+
+  home-manager = {
+    extraSpecialArgs = {inherit inputs;};
+    users = {
+      "gurvanbk" = import ./home.nix;
+    };
   };
 
   programs = {

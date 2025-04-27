@@ -4,7 +4,6 @@
     rofi-wayland # Application chooser
     firefox
     _1password-gui
-    thunderbird
     signal-desktop
     whatsapp-for-linux
 
@@ -75,4 +74,6 @@
     "x-scheme-handler/about" = "firefox.desktop";
     "x-scheme-handler/unknown" = "firefox.desktop";
   };
+
+  programs.zsh.enable = true;
 }

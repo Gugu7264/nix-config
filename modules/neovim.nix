@@ -24,8 +24,38 @@ in {
         lineNumberMode = "relNumber";
 
         luaConfigPost = ''
+          vim.api.nvim_create_autocmd("BufWritePost", {
+            pattern = "*.json",
+            callback = function()
+              if vim.fn.executable("jq") ~= 1 then
+                vim.notify("jq not found in PATH", vim.log.levels.WARN)
+                return
+              end
+
+              -- Save current buffer content
+              local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+              local input = table.concat(lines, "\n")
+
+              -- Run jq on the content
+              local jq = vim.fn.system("jq '.'", input)
+
+              -- Check exit code
+              if vim.v.shell_error == 0 then
+                -- Replace buffer with jq output
+                vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.split(jq, "\n"))
+              else
+                -- Do not modify, show error
+                vim.notify("Failed to format JSON: " .. jq, vim.log.levels.ERROR)
+              end
+            end,
+          })
+
           vim.filetype.add({extension = {tig = "tiger", tih = "tiger"}})
         '';
+
+        extraPackages = [
+          pkgs.jq
+        ];
 
         lsp = {
           enable = true;
@@ -61,11 +91,15 @@ in {
           };
           markdown.enable = true;
           bash.enable = true;
+          python.enable = true;
         };
 
         treesitter = {
           enable = true;
-          grammars = [pkgs.tree-sitter-grammars.tree-sitter-tiger];
+          grammars = [
+            pkgs.tree-sitter-grammars.tree-sitter-tiger
+            pkgs.tree-sitter-grammars.tree-sitter-json
+          ];
         };
 
         git = {

@@ -12,6 +12,7 @@
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
     ./packages.nix
+    ./sound.nix
     ../../modules/neovim.nix
   ];
 
@@ -23,6 +24,8 @@
       "discord"
       "vscode"
     ];
+
+  programs.nix-ld.enable = true;
 
   boot = {
     # Bootloader.
@@ -36,7 +39,6 @@
       ''usbcore.autosuspend=-1''
 
       "mem_sleep_default=s2idle" # should fix sleeping crashing the computer
-      "snd-intel-dspcfg.dsp_driver=1"
     ];
     blacklistedKernelModules = ["ucsi_acpi" "typec_ucsi"]; # fixes charging !!! (kernelParams required too?)
   };
@@ -53,10 +55,6 @@
     udev.extraRules = ''
       SUBSYSTEM=="usb", ATTR{idVendor}=="0d28", ATTR{idProduct}=="0204", MODE="0666"
     '';
-
-    # Enable sound
-    pulseaudio.enable = true;
-    pipewire.enable = false; # Default is true on nixos, but sound doesn't work out of the box
 
     # Enable bluetooth
     blueman.enable = true;

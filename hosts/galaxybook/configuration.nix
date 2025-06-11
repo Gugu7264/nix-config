@@ -12,6 +12,7 @@
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
     ./packages.nix
+    ./ocaml.nix
     ./sound.nix
     ../../modules/neovim.nix
   ];

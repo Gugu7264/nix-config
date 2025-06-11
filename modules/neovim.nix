@@ -55,6 +55,7 @@ in {
 
         extraPackages = [
           pkgs.jq
+          pkgs.php83Packages.php-cs-fixer
         ];
 
         lsp = {
@@ -92,6 +93,15 @@ in {
           markdown.enable = true;
           bash.enable = true;
           python.enable = true;
+          php = {
+            enable = true;
+          };
+          ocaml = {
+            enable = true;
+            lsp.enable = false;
+            treesitter.enable = true;
+            format.enable = true;
+          };
         };
 
         treesitter = {

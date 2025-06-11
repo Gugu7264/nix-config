@@ -65,8 +65,8 @@
       gc = "git commit";
       gss = "git status --short";
       gs = "git status";
-      grbc = "git rebase continue";
-      grba = "git rebase abort";
+      grbc = "git rebase --continue";
+      grba = "git rebase --abort";
       grbom = "git rebase origin/main";
       gsw = "git switch";
       gsm = "git switch main";
@@ -74,6 +74,11 @@
       gl = "git pull";
       gp = "git push";
       gpf = "git push --force-with-lease --force-if-includes";
+      gf = "git fetch";
+      gbgd = "git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d";
+      gbgD = "git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D";
+      gb = "git branch";
+      grpo = "git remote prune origin";
     };
   };
 }

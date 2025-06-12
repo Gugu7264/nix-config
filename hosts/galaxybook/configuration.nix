@@ -42,6 +42,7 @@
       "mem_sleep_default=s2idle" # should fix sleeping crashing the computer
     ];
     blacklistedKernelModules = ["ucsi_acpi" "typec_ucsi"]; # fixes charging !!! (kernelParams required too?)
+    consoleLogLevel = 3; # 3 = KERN_ERR, 4 = KERN_WARNING
   };
 
   services = {

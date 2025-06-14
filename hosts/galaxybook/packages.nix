@@ -46,6 +46,7 @@
 
     # Others
     discord
+    slack
     imagemagick
     chromium
     vscode

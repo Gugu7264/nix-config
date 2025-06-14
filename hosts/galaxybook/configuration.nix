@@ -23,6 +23,7 @@
     builtins.elem (lib.getName pkg) [
       "1password"
       "discord"
+      "slack"
       "vscode"
     ];
 

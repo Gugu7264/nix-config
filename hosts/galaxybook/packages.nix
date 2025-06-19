@@ -38,6 +38,7 @@
     openssl
     curlFull
     hyperfine
+    ripgrep
 
     # AFS connection
     krb5

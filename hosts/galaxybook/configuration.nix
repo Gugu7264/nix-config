@@ -167,6 +167,7 @@
     extraSpecialArgs = {inherit inputs;};
     useGlobalPkgs = true;
     useUserPackages = true;
+    backupFileExtension = "backup";
     users = {
       "gurvanbk" = import ./home.nix;
     };

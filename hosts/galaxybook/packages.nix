@@ -10,8 +10,6 @@
     })
   ];
   environment.systemPackages = with pkgs; [
-    alacritty # Terminal emulator
-    rofi-wayland # Application chooser
     firefox
     _1password-gui
     signal-desktop
@@ -23,8 +21,6 @@
     lxqt.lxqt-policykit
     wl-clipboard
 
-    waybar # Status bar
-    adwaita-icon-theme # Cursor icons
     pavucontrol # Sound control
     pamixer # Sound control
     libnotify # Send notifications
@@ -62,7 +58,6 @@
     chromium
     vscode
     jetbrains.idea-ultimate
-    hyprshot # screenshots
 
     toolbox # IDEA Code with me
   ];

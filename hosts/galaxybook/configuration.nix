@@ -25,6 +25,7 @@
       "discord"
       "slack"
       "vscode"
+      "idea-ultimate"
     ];
 
   programs.nix-ld.enable = true;

@@ -1,4 +1,14 @@
 {pkgs, ...}: {
+  nixpkgs.overlays = [
+    (final: prev: {
+      openssh = prev.openssh.overrideAttrs (
+        old: {
+          configureFlags = old.configureFlags ++ ["--with-kerberos5"];
+          buildInputs = old.buildInputs ++ [prev.krb5];
+        }
+      );
+    })
+  ];
   environment.systemPackages = with pkgs; [
     alacritty # Terminal emulator
     rofi-wayland # Application chooser
@@ -43,7 +53,7 @@
     # AFS connection
     krb5
     sshfs
-    openssh_gssapi
+    openssh
 
     # Others
     discord
@@ -51,7 +61,10 @@
     imagemagick
     chromium
     vscode
+    jetbrains.idea-ultimate
     hyprshot # screenshots
+
+    toolbox # IDEA Code with me
   ];
 
   fonts.packages = with pkgs;
@@ -78,4 +91,10 @@
   };
 
   programs.zsh.enable = true;
+
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    openFirewall = true;
+  };
 }

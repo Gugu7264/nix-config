@@ -13,6 +13,8 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    maomaowm.url = "github:Gugu7264/maomaowm";
   };
 
   outputs = {nixpkgs, ...} @ inputs: {

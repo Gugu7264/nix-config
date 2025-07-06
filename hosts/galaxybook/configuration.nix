@@ -11,6 +11,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
+    inputs.maomaowm.nixosModules.maomaowm
     ./packages.nix
     ./ocaml.nix
     ./sound.nix
@@ -171,13 +172,16 @@
     users = {
       "gurvanbk" = import ./home.nix;
     };
+    sharedModules = [
+      inputs.maomaowm.hmModules.maomaowm
+    ];
   };
 
   programs = {
     # Screen brightness
     light.enable = true;
 
-    hyprland.enable = true;
+    maomaowm.enable = true;
     hyprlock.enable = true;
   };
 

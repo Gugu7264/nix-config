@@ -27,6 +27,9 @@
       "slack"
       "vscode"
       "idea-ultimate"
+      "steam"
+      "steam-unwrapped"
+      "plex-desktop"
     ];
 
   programs.nix-ld.enable = true;
@@ -50,6 +53,7 @@
 
   services = {
     # Power management
+    murmur.bonjour = true;
     tlp.enable = true;
     upower.enable = true;
 
@@ -183,6 +187,11 @@
 
     maomaowm.enable = true;
     hyprlock.enable = true;
+  };
+
+  security.pam.services = {
+    sudo.u2fAuth = true;
+    login.u2fAuth = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -60,6 +60,12 @@
     jetbrains.idea-ultimate
 
     toolbox # IDEA Code with me
+    plex-desktop
+
+    cura-appimage
+
+    libfido2
+    pam_u2f
   ];
 
   fonts.packages = with pkgs;
@@ -86,6 +92,7 @@
   };
 
   programs.zsh.enable = true;
+  programs.steam.enable = true;
 
   services.avahi = {
     enable = true;

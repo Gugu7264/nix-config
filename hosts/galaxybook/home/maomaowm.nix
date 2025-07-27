@@ -25,6 +25,10 @@
       dunst &
       waybar &
 
+      firefox &
+      (sleep 1 && discord) &
+      (sleep 2 && slack) &
+
       # Cursor setup (converted from Hyprland)
       hyprctl setcursor Adwaita 24 || true &
     '';

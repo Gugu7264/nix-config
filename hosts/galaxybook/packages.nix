@@ -70,6 +70,7 @@
     (writeShellScriptBin "digikam" ''
       QT_QPA_PLATFORM=xcb ${pkgs.digikam}/bin/digikam "$@"
     '')
+    rclone
   ];
 
   fonts.packages = with pkgs;

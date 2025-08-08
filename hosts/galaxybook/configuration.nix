@@ -189,9 +189,12 @@
     hyprlock.enable = true;
   };
 
-  security.pam.services = {
-    sudo.u2fAuth = true;
-    login.u2fAuth = true;
+  security.pam = {
+    services = {
+      sudo.u2fAuth = true;
+      login.u2fAuth = true;
+    };
+    u2f.settings.cue = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are

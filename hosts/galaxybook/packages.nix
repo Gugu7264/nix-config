@@ -66,6 +66,10 @@
 
     libfido2
     pam_u2f
+
+    (writeShellScriptBin "digikam" ''
+      QT_QPA_PLATFORM=xcb ${pkgs.digikam}/bin/digikam "$@"
+    '')
   ];
 
   fonts.packages = with pkgs;

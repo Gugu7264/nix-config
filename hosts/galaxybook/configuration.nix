@@ -18,6 +18,11 @@
     ../../modules/neovim.nix
   ];
 
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = with pkgs; [
+    xdg-desktop-portal-wlr
+  ];
+
   nix.settings.experimental-features = "nix-command flakes";
   nixpkgs.config.allowUnfree = false;
   nixpkgs.config.allowUnfreePredicate = pkg:
@@ -27,10 +32,17 @@
       "slack"
       "vscode"
       "idea-ultimate"
+      "phpstorm"
       "steam"
       "steam-unwrapped"
       "plex-desktop"
+      "datagrip"
+      "hplip"
+      "pantum-driver"
     ];
+
+  hardware.graphics.enable = true;
+  hardware.opengl.enable = true;
 
   programs.nix-ld.enable = true;
 
@@ -51,7 +63,19 @@
     consoleLogLevel = 3; # 3 = KERN_ERR, 4 = KERN_WARNING
   };
 
+  services.pcscd.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryPackage = pkgs.pinentry-curses;
+    enableSSHSupport = true;
+  };
+
   services = {
+    printing = {
+      enable = true;
+      browsing = true;
+      drivers = [pkgs.hplipWithPlugin pkgs.pantum-driver];
+    };
     # Power management
     murmur.bonjour = true;
     tlp.enable = true;
@@ -211,6 +235,7 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
+  networking.firewall.allowedTCPPorts = [631];
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.

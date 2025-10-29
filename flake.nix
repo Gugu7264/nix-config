@@ -14,7 +14,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    maomaowm.url = "github:Gugu7264/maomaowm";
+    maomaowm = {
+      url = "github:Gugu7264/maomaowm";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {nixpkgs, ...} @ inputs: {

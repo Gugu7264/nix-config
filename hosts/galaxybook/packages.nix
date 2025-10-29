@@ -58,6 +58,7 @@
     chromium
     vscode
     jetbrains.idea-ultimate
+    jetbrains.phpstorm
 
     toolbox # IDEA Code with me
     plex-desktop
@@ -71,6 +72,13 @@
       QT_QPA_PLATFORM=xcb ${pkgs.digikam}/bin/digikam "$@"
     '')
     rclone
+    php
+    jetbrains.datagrip
+
+    # SSH key on Yubikey
+    yubikey-manager
+    gnupg
+    pinentry
   ];
 
   fonts.packages = with pkgs;
@@ -101,7 +109,12 @@
 
   services.avahi = {
     enable = true;
-    nssmdns = true;
+    nssmdns4 = true;
     openFirewall = true;
+  };
+
+  services.mysql = {
+    enable = true;
+    package = pkgs.mariadb;
   };
 }

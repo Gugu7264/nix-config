@@ -17,7 +17,7 @@
 
     dunst # notification manager
     tree # command
-    htop # command
+    btop # command
     lxqt.lxqt-policykit
     wl-clipboard
 

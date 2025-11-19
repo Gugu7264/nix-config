@@ -1,5 +1,9 @@
-{ config, pkgs, lib, ... }:
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   nixpkgs.overlays = [
     (final: prev: {
       openssh = prev.openssh.overrideAttrs (
@@ -14,7 +18,7 @@
   environment.systemPackages = with pkgs; [
     _1password-gui
     signal-desktop
-    whatsapp-for-linux
+    wasistlos
     dunst
     tree
     btop

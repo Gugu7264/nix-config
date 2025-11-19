@@ -20,5 +20,7 @@
     stateVersion = "24.11";
   };
 
+  editor.neovim.enable = true;
+
   programs.home-manager.enable = true;
 }

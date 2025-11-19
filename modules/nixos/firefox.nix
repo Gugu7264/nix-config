@@ -1,8 +1,11 @@
-{ config, pkgs, lib, ... }:
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-wayland;
   };
 
   environment.sessionVariables.DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";

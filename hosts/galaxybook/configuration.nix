@@ -18,10 +18,13 @@
     ../../modules/neovim.nix
   ];
 
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = with pkgs; [
-    xdg-desktop-portal-wlr
-  ];
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+    ];
+  };
 
   nix.settings.experimental-features = "nix-command flakes";
   nixpkgs.config.allowUnfree = false;

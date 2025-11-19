@@ -31,14 +31,16 @@
 
       # Cursor setup (converted from Hyprland)
       hyprctl setcursor Adwaita 24 || true &
+
+      systemctl --user set-environment XDG_CURRENT_DESKTOP=wlroots; systemctl --user import-environment WAYLAND_DISPLAY; systemctl --user start xdg-desktop-portal-wlr.service
     '';
   };
 
   home.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
-    XDG_CURRENT_DESKTOP = "maomaowm";
+    XDG_CURRENT_DESKTOP = "wlroots";
     XDG_SESSION_TYPE = "wayland";
-    XDG_SESSION_DESKTOP = "maomaowm";
+    XDG_SESSION_DESKTOP = "wlroots";
     QT_QPA_PLATFORM = "wayland";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     MOZ_ENABLE_WAYLAND = "1";

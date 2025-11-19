@@ -9,8 +9,12 @@
       );
     })
   ];
+  programs.firefox = {
+    enable = true;
+    package = pkgs.firefox-wayland;
+  };
   environment.systemPackages = with pkgs; [
-    firefox
+    # firefox
     _1password-gui
     signal-desktop
     whatsapp-for-linux

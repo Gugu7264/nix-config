@@ -70,7 +70,7 @@
     jetbrains.datagrip
     yubikey-manager
     gnupg
-    # pinentry
+    nh
   ];
 
   fonts.packages = with pkgs;

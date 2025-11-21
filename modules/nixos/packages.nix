@@ -61,9 +61,10 @@
     cura-appimage
     libfido2
     pam_u2f
-    (writeShellScriptBin "digikam" ''
-      QT_QPA_PLATFORM=xcb ${pkgs.digikam}/bin/digikam "$@"
-    '')
+    # NOTE: might have been updated to work, check nixpkgs PR
+    # (writeShellScriptBin "digikam" ''
+    #   QT_QPA_PLATFORM=xcb ${pkgs.digikam}/bin/digikam "$@"
+    # '')
     rclone
     php
     jetbrains.datagrip

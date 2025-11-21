@@ -98,5 +98,26 @@
     shell = pkgs.zsh;
   };
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      xdg-desktop-portal = prev.xdg-desktop-portal.overrideAttrs (old: {
+        doCheck = false;
+      });
+
+      pythonPackagesExtensions =
+        prev.pythonPackagesExtensions
+        ++ [
+          (python-final: python-prev: {
+            django = python-prev.django.overridePythonAttrs (old: {
+              doCheck = false;
+            });
+            twisted = python-prev.twisted.overridePythonAttrs (old: {
+              doCheck = false;
+            });
+          })
+        ];
+    })
+  ];
+
   system.stateVersion = "25.05";
 }

@@ -27,57 +27,63 @@
     ../../modules/nixos/firefox.nix
   ];
 
-  networking.hostName = "nixos";
-  networking.networkmanager.enable = true;
-  networking.firewall.allowedTCPPorts = [631];
+  networking = {
+    hostName = "nixos";
+    networkmanager.enable = true;
+    firewall.allowedTCPPorts = [631];
+  };
 
-  boot.kernelParams = [
-    ''acpi_osi=!''
-    ''acpi_osi=\"Windows 2022\"''
-    ''acpi_enforce_resources=lax''
-    ''usbcore.autosuspend=-1''
-    "mem_sleep_default=s2idle"
-  ];
-  boot.blacklistedKernelModules = ["ucsi_acpi" "typec_ucsi"];
-  boot.consoleLogLevel = 3;
-  boot.extraModprobeConfig = ''
-    options snd_hda_intel model=laptop-dmic
-  '';
-
-  services.murmur.bonjour = true;
-  services.tlp.enable = true;
-  services.upower.enable = true;
-  services.fwupd.enable = true;
-
-  services.actkbd = {
-    enable = true;
-    bindings = [
-      {
-        keys = [114];
-        events = ["key"];
-        command = "pactl set-sink-mute 0 toggle";
-      }
-      {
-        keys = [115];
-        events = ["key" "rep"];
-        command = "pactl set-sink-volume 0 -5%";
-      }
-      {
-        keys = [116];
-        events = ["key" "rep"];
-        command = "pactl set-sink-volume 0 +5%";
-      }
-      {
-        keys = [224];
-        events = ["key"];
-        command = "/run/current-system/sw/bin/light -U 5";
-      }
-      {
-        keys = [225];
-        events = ["key"];
-        command = "/run/current-system/sw/bin/light -A 5";
-      }
+  boot = {
+    kernelParams = [
+      ''acpi_osi=!''
+      ''acpi_osi=\"Windows 2022\"''
+      ''acpi_enforce_resources=lax''
+      ''usbcore.autosuspend=-1''
+      "mem_sleep_default=s2idle"
     ];
+    blacklistedKernelModules = ["ucsi_acpi" "typec_ucsi"];
+    consoleLogLevel = 3;
+    extraModprobeConfig = ''
+      options snd_hda_intel model=laptop-dmic
+    '';
+  };
+
+  services = {
+    murmur.bonjour = true;
+    tlp.enable = true;
+    upower.enable = true;
+    fwupd.enable = true;
+
+    actkbd = {
+      enable = true;
+      bindings = [
+        {
+          keys = [114];
+          events = ["key"];
+          command = "pactl set-sink-mute 0 toggle";
+        }
+        {
+          keys = [115];
+          events = ["key" "rep"];
+          command = "pactl set-sink-volume 0 -5%";
+        }
+        {
+          keys = [116];
+          events = ["key" "rep"];
+          command = "pactl set-sink-volume 0 +5%";
+        }
+        {
+          keys = [224];
+          events = ["key"];
+          command = "/run/current-system/sw/bin/light -U 5";
+        }
+        {
+          keys = [225];
+          events = ["key"];
+          command = "/run/current-system/sw/bin/light -A 5";
+        }
+      ];
+    };
   };
 
   programs.light.enable = true;

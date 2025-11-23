@@ -18,6 +18,8 @@
       url = "github:Gugu7264/maomaowm";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs = {nixpkgs, ...} @ inputs: {
@@ -54,6 +56,7 @@
               users.gurvanbk = import ./home/gurvanbk/default.nix;
             };
           }
+          inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen5
         ];
       };
     };

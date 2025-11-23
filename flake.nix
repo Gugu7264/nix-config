@@ -21,20 +21,41 @@
   };
 
   outputs = {nixpkgs, ...} @ inputs: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
-      system = "x86_64-linux";
-      modules = [
-        ./hosts/galaxybook/default.nix
-        inputs.home-manager.nixosModules.default
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "backup";
-          home-manager.extraSpecialArgs = {inherit inputs;};
-          home-manager.users.gurvanbk = import ./home/gurvanbk/default.nix;
-        }
-      ];
+    nixosConfigurations = {
+      nixos = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/galaxybook/default.nix
+          inputs.home-manager.nixosModules.default
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "backup";
+              extraSpecialArgs = {inherit inputs;};
+              users.gurvanbk = import ./home/gurvanbk/default.nix;
+            };
+          }
+        ];
+      };
+      thinkpad-p14s = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/thinkpad-p14s/default.nix
+          inputs.home-manager.nixosModules.default
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "backup";
+              extraSpecialArgs = {inherit inputs;};
+              users.gurvanbk = import ./home/gurvanbk/default.nix;
+            };
+          }
+        ];
+      };
     };
   };
 }

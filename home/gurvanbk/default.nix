@@ -11,6 +11,7 @@
     ../../modules/home-manager/maomaowm.nix
     ../../modules/home-manager/waybar.nix
     ../../modules/home-manager/rofi.nix
+    ../../modules/home-manager/git.nix
     inputs.maomaowm.hmModules.maomaowm
   ];
 

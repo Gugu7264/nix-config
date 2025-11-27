@@ -1,5 +1,9 @@
-{ config, pkgs, lib, ... }:
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   home.packages = with pkgs; [
     xdg-desktop-portal-wlr
     alacritty
@@ -26,7 +30,13 @@
       # Cursor setup
       hyprctl setcursor Adwaita 24 || true &
 
-      systemctl --user set-environment XDG_CURRENT_DESKTOP=wlroots; systemctl --user import-environment WAYLAND_DISPLAY; systemctl --user start xdg-desktop-portal-wlr.service
+      systemctl --user set-environment XDG_CURRENT_DESKTOP=wlroots
+      systemctl --user import-environment WAYLAND_DISPLAY
+
+      systemctl --user start xdg-desktop-portal-wlr.service
+      systemctl --user restart elephant.service
+
+      walker --gapplication-service &
     '';
   };
 

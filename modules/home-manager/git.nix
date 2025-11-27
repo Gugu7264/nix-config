@@ -10,6 +10,9 @@ _: {
       user.name = "Gurvan Biguet--Kerloc'h";
       rebase.autostash = true;
       init.defaultbranch = "main";
+      alias = {
+        lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --";
+      };
     };
   };
 }

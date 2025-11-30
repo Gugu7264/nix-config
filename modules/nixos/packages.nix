@@ -19,7 +19,6 @@
     _1password-gui
     signal-desktop
     wasistlos
-    dunst
     tree
     btop
     lxqt.lxqt-policykit

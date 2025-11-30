@@ -1,19 +1,13 @@
-{
-  config,
-  pkgs,
-  lib,
-  inputs,
-  ...
-}: {
+_: {
   imports = [
     ../../modules/home-manager/zsh.nix
     ../../modules/home-manager/neovim.nix
-    ../../modules/home-manager/maomaowm.nix
     ../../modules/home-manager/waybar.nix
     ../../modules/home-manager/rofi.nix
     ../../modules/home-manager/git.nix
     ../../modules/home-manager/walker.nix
-    inputs.maomaowm.hmModules.maomaowm
+    ../../modules/home-manager/niri.nix
+    ../../modules/home-manager/mako.nix
   ];
 
   home = {

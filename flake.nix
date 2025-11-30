@@ -21,6 +21,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     maomaowm = {
       url = "github:Gugu7264/maomaowm";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -25,6 +25,7 @@
     ../../modules/nixos/mysql.nix
     ../../modules/nixos/ocaml.nix
     ../../modules/nixos/firefox.nix
+    ../../modules/nixos/niri.nix
   ];
 
   networking = {
@@ -34,21 +35,10 @@
   };
 
   boot = {
-    kernelParams = [
-      #''acpi_osi=!''
-      #'acpi_osi=\"Windows 2022\"''
-      #''acpi_enforce_resources=lax''
-      #''usbcore.autosuspend=-1''
-      #"mem_sleep_default=s2idle"
-    ];
-    #blacklistedKernelModules = ["ucsi_acpi" "typec_ucsi"];
-    consoleLogLevel = 3;
-    #extraModprobeConfig = ''
-    #  options snd_hda_intel model=laptop-dmic
-    #'';
+    # consoleLogLevel = 3;
     initrd = {
       systemd.enable = true;
-      luks.fido2Support = false;
+      luks.fido2Support = false; # disable old support
     };
   };
 
@@ -69,7 +59,7 @@
     fwupd.enable = true;
 
     actkbd = {
-      enable = true;
+      enable = false;
       bindings = [
         {
           keys = [114];

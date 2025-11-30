@@ -64,6 +64,23 @@
             };
           }
           inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen5
+          # ({pkgs, ...}: {
+          #   nixpkgs.overlays = [
+          #     (final: prev: {
+          #       jetbrains =
+          #         prev.jetbrains
+          #         // {
+          #           idea-ultimate = prev.jetbrains.idea-ultimate.overrideAttrs (old: {
+          #             version = "2025.3-RC";
+          #             src = prev.fetchurl {
+          #               url = "https://download.jetbrains.com/idea/ideaIU-2025.1.7.tar.gz";
+          #               sha256 = "sha256-VNr0K0Mu8SfyeLm79HNdipv5xsx0cqeXvdvgCCmeINI=";
+          #             };
+          #           });
+          #         };
+          #     })
+          #   ];
+          # })
         ];
       };
     };

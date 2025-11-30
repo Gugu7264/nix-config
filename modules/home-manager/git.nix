@@ -8,6 +8,7 @@ _: {
     settings = {
       user.email = "gurvan.biguet-kerloch@epita.fr";
       user.name = "Gurvan Biguet--Kerloc'h";
+      pull.rebase = true;
       rebase.autostash = true;
       init.defaultbranch = "main";
       alias = {

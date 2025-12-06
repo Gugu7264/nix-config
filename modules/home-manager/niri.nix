@@ -18,7 +18,7 @@
           open-focused = false;
         }
       ];
-      cursor.size = 18;
+      cursor.size = 16;
       prefer-no-csd = true;
       spawn-at-startup = [
         {
@@ -105,6 +105,8 @@
         "Print".action.screenshot = {show-pointer = false;};
         "Shift+Print".action.screenshot-screen = {write-to-disk = true;};
         "Ctrl+Print".action.screenshot-window = {write-to-disk = true;};
+
+        "Mod+R".action = switch-preset-column-width;
       };
     };
   };

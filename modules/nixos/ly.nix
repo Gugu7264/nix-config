@@ -1,4 +1,3 @@
-{ config, pkgs, lib, ... }:
-{
+_: {
   services.displayManager.ly.enable = true;
 }

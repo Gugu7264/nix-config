@@ -1,9 +1,4 @@
-{
-  pkgs,
-  lib,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos/boot.nix
@@ -13,8 +8,7 @@
     ../../modules/nixos/sound.nix
     ../../modules/nixos/printing.nix
     ../../modules/nixos/opengl.nix
-    ../../modules/nixos/ly.nix
-    ../../modules/nixos/maomaowm.nix
+    ../../modules/nixos/greet.nix
     ../../modules/nixos/docker.nix
     ../../modules/nixos/libvirt.nix
     ../../modules/nixos/udev.nix
@@ -35,7 +29,6 @@
   };
 
   boot = {
-    # consoleLogLevel = 3;
     initrd = {
       systemd.enable = true;
       luks.fido2Support = false; # disable old support
@@ -57,37 +50,7 @@
     };
     upower.enable = true;
     fwupd.enable = true;
-
-    actkbd = {
-      enable = false;
-      bindings = [
-        {
-          keys = [114];
-          events = ["key"];
-          command = "pactl set-sink-mute 0 toggle";
-        }
-        {
-          keys = [115];
-          events = ["key" "rep"];
-          command = "pactl set-sink-volume 0 -5%";
-        }
-        {
-          keys = [116];
-          events = ["key" "rep"];
-          command = "pactl set-sink-volume 0 +5%";
-        }
-        {
-          keys = [224];
-          events = ["key"];
-          command = "/run/current-system/sw/bin/light -U 5";
-        }
-        {
-          keys = [225];
-          events = ["key"];
-          command = "/run/current-system/sw/bin/light -A 5";
-        }
-      ];
-    };
+    fprintd.enable = true;
   };
 
   programs.light.enable = true;
@@ -128,9 +91,6 @@
         ];
     })
   ];
-
-  # TODO: MOVE
-  services.fprintd.enable = true;
 
   system.stateVersion = "25.05";
 }

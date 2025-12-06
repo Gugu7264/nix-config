@@ -7,4 +7,5 @@
 }: {
   imports = [inputs.niri.nixosModules.niri];
   programs.niri.enable = true;
+  programs.hyprlock.enable = true;
 }

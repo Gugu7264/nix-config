@@ -3,7 +3,11 @@
   pkgs,
   ...
 }: {
-  home.packages = [pkgs.xwayland-satellite];
+  home.packages = with pkgs; [
+    xwayland-satellite
+    adwaita-icon-theme
+  ];
+
   programs.niri = {
     settings = {
       workspaces."chat" = {};
@@ -17,8 +21,21 @@
           open-on-workspace = "chat";
           open-focused = false;
         }
+        {
+          matches = [
+            {
+              app-id = "firefox";
+              at-startup = true;
+            }
+          ];
+          open-on-workspace = "2";
+          open-focused = true;
+        }
       ];
-      cursor.size = 16;
+      cursor = {
+        theme = "Adwaita";
+        size = 16;
+      };
       prefer-no-csd = true;
       spawn-at-startup = [
         {
@@ -30,6 +47,9 @@
           ];
         }
         {argv = ["waybar"];}
+        {argv = ["slack"];}
+        {argv = ["discord"];}
+        {argv = ["firefox"];}
       ];
       input = {
         keyboard = {
@@ -53,7 +73,7 @@
 
       binds = with config.lib.niri.actions; {
         "XF86AudioRaiseVolume" = {
-          action = spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+";
+          action = spawn "wpctl" "set-volume" "-l" "1.0" "@DEFAULT_AUDIO_SINK@" "0.1+";
           allow-when-locked = true;
         };
         "XF86AudioLowerVolume" = {
@@ -64,8 +84,8 @@
           action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
           allow-when-locked = true;
         };
-        "XF86MonBrightnessDown".action = spawn-sh "/run/current-system/sw/bin/light -A 5";
-        "XF86MonBrightnessUp".action = spawn-sh "/run/current-system/sw/bin/light -U 5";
+        "XF86MonBrightnessDown".action = spawn-sh "/run/current-system/sw/bin/light -U 5";
+        "XF86MonBrightnessUp".action = spawn-sh "/run/current-system/sw/bin/light -A 5";
         "XF86AudioMicMute".action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle";
         "Mod+Shift+E".action = quit;
         "Mod+Ctrl+Shift+E".action = quit {skip-confirmation = true;};

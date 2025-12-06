@@ -4,6 +4,7 @@
     ../../modules/nixos/boot.nix
     ../../modules/nixos/locale.nix
     ../../modules/nixos/nix.nix
+    ../../modules/nixos/mic-led.nix
     ../../modules/nixos/bluetooth.nix
     ../../modules/nixos/sound.nix
     ../../modules/nixos/printing.nix

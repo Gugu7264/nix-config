@@ -1,8 +1,12 @@
-{ config, pkgs, lib, ... }:
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   virtualisation.docker.enable = true;
   virtualisation.docker.rootless = {
-    enable = true;
+    enable = false;
     setSocketVariable = true;
   };
 }

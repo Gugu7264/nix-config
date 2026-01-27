@@ -7,11 +7,19 @@
     nautilus
     xwayland-satellite
     adwaita-icon-theme
+    wdisplays # for quick moving screens
+    wl-mirror # for mirroring to another screen
   ];
 
   programs.niri = {
     settings = {
-      workspaces."chat" = {};
+      workspaces = {
+        "chat" = {};
+        "1" = {};
+        "2" = {};
+        "3" = {};
+        "4" = {};
+      };
       window-rules = [
         {
           matches = [
@@ -29,8 +37,9 @@
               at-startup = true;
             }
           ];
-          open-on-workspace = "2";
-          open-focused = true;
+          default-column-width = {proportion = 1.0;};
+          open-on-workspace = "1";
+          open-focused = false;
         }
       ];
       cursor = {
@@ -47,6 +56,7 @@
             "XDG_CURRENT_DESKTOP"
           ];
         }
+        # {argv = ["kanshi"];}
         {argv = ["waybar"];}
         {argv = ["slack"];}
         {argv = ["discord"];}
@@ -62,6 +72,17 @@
       outputs = {
         "eDP-1" = {
           scale = 1;
+          position = {
+            x = 0;
+            y = 1080;
+          };
+        };
+        "Iiyama North America PL2493H 11648B8900108" = {
+          scale = 1;
+          position = {
+            x = 0;
+            y = 0;
+          };
         };
       };
       layout = {
@@ -100,16 +121,14 @@
 
         "Mod+twosuperior".action = focus-workspace "chat";
         "Mod+Shift+twosuperior".action.move-window-to-workspace = "chat";
-        "Mod+ampersand".action = focus-workspace 2;
-        "Mod+Shift+ampersand".action.move-window-to-workspace = 2;
-        "Mod+eacute".action = focus-workspace 3;
-        "Mod+Shift+eacute".action.move-window-to-workspace = 3;
-        "Mod+quotedbl".action = focus-workspace 4;
-        "Mod+Shift+quotedbl".action.move-window-to-workspace = 4;
-        "Mod+apostrophe".action = focus-workspace 5;
-        "Mod+Shift+apostrophe".action.move-window-to-workspace = 5;
-        "Mod+parenleft".action = focus-workspace 6;
-        "Mod+Shift+parenleft".action.move-window-to-workspace = 6;
+        "Mod+ampersand".action = focus-workspace "1";
+        "Mod+Shift+ampersand".action.move-window-to-workspace = "1";
+        "Mod+eacute".action = focus-workspace "2";
+        "Mod+Shift+eacute".action.move-window-to-workspace = "2";
+        "Mod+quotedbl".action = focus-workspace "3";
+        "Mod+Shift+quotedbl".action.move-window-to-workspace = "3";
+        "Mod+apostrophe".action = focus-workspace "4";
+        "Mod+Shift+apostrophe".action.move-window-to-workspace = "4";
         "Mod+comma".action = consume-or-expel-window-right;
         "Mod+L".action = spawn "hyprlock";
 
@@ -128,6 +147,16 @@
         "Ctrl+Print".action.screenshot-window = {write-to-disk = true;};
 
         "Mod+R".action = switch-preset-column-width;
+
+        "Mod+Ctrl+Right".action = focus-monitor-right;
+        "Mod+Ctrl+Left".action = focus-monitor-left;
+        "Mod+Ctrl+Up".action = focus-monitor-up;
+        "Mod+Ctrl+Down".action = focus-monitor-down;
+
+        "Mod+Ctrl+Shift+Right".action = move-column-to-monitor-right;
+        "Mod+Ctrl+Shift+Left".action = move-column-to-monitor-left;
+        "Mod+Ctrl+Shift+Up".action = move-column-to-monitor-up;
+        "Mod+Ctrl+Shift+Down".action = move-column-to-monitor-down;
       };
     };
   };

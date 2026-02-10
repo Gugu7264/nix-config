@@ -15,10 +15,10 @@
     settings = {
       workspaces = {
         "chat" = {};
-        "1" = {};
-        "2" = {};
-        "3" = {};
-        "4" = {};
+        "ws-1" = {};
+        "ws-2" = {};
+        "ws-3" = {};
+        "ws-4" = {};
       };
       window-rules = [
         {
@@ -121,14 +121,14 @@
 
         "Mod+twosuperior".action = focus-workspace "chat";
         "Mod+Shift+twosuperior".action.move-window-to-workspace = "chat";
-        "Mod+ampersand".action = focus-workspace "1";
-        "Mod+Shift+ampersand".action.move-window-to-workspace = "1";
-        "Mod+eacute".action = focus-workspace "2";
-        "Mod+Shift+eacute".action.move-window-to-workspace = "2";
-        "Mod+quotedbl".action = focus-workspace "3";
-        "Mod+Shift+quotedbl".action.move-window-to-workspace = "3";
-        "Mod+apostrophe".action = focus-workspace "4";
-        "Mod+Shift+apostrophe".action.move-window-to-workspace = "4";
+        "Mod+ampersand".action = focus-workspace "ws-1";
+        "Mod+Shift+ampersand".action.move-window-to-workspace = "ws-1";
+        "Mod+eacute".action = focus-workspace "ws-2";
+        "Mod+Shift+eacute".action.move-window-to-workspace = "ws-2";
+        "Mod+quotedbl".action = focus-workspace "ws-3";
+        "Mod+Shift+quotedbl".action.move-window-to-workspace = "ws-3";
+        "Mod+apostrophe".action = focus-workspace "ws-4";
+        "Mod+Shift+apostrophe".action.move-window-to-workspace = "ws-4";
         "Mod+comma".action = consume-or-expel-window-right;
         "Mod+L".action = spawn "hyprlock";
 

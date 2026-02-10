@@ -18,6 +18,11 @@ _: {
       "urgency=high" = {
         border-color = "#f5a97f";
       };
+
+      "mode=do-not-disturb" = {
+        invisible = 1;
+        on-notify = "none";
+      };
     };
   };
 }

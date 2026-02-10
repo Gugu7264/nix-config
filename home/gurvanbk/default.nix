@@ -8,6 +8,7 @@ _: {
     ../../modules/home-manager/niri.nix
     ../../modules/home-manager/mako.nix
     ../../modules/home-manager/alacritty.nix
+    ../../modules/home-manager/hyprlock.nix
     # ../../modules/home-manager/kanshi.nix
   ];
 

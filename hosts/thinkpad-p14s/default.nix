@@ -21,6 +21,7 @@
     ../../modules/nixos/ocaml.nix
     ../../modules/nixos/firefox.nix
     ../../modules/nixos/niri.nix
+    ../../modules/nixos/gistre.nix
   ];
 
   networking = {
@@ -89,6 +90,9 @@
         doCheck = false;
       });
 
+      jupyter-server = prev.jupyter-server.overrideAttrs (old: {
+        doCheck = false;
+      });
       pythonPackagesExtensions =
         prev.pythonPackagesExtensions
         ++ [
@@ -97,6 +101,9 @@
               doCheck = false;
             });
             twisted = python-prev.twisted.overridePythonAttrs (old: {
+              doCheck = false;
+            });
+            jupyter-server = python-prev.jupyter-server.overridePythonAttrs (old: {
               doCheck = false;
             });
           })

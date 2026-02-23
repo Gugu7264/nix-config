@@ -1,5 +1,9 @@
-{ config, pkgs, lib, ... }:
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   nix.settings.experimental-features = "nix-command flakes";
   nixpkgs.config.allowUnfree = false;
   nixpkgs.config.allowUnfreePredicate = pkg:
@@ -8,7 +12,8 @@
       "discord"
       "slack"
       "vscode"
-      "idea-ultimate"
+      "idea"
+      "clion"
       "phpstorm"
       "steam"
       "steam-unwrapped"

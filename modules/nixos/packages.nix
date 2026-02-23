@@ -53,7 +53,8 @@
     imagemagick
     chromium
     vscode
-    jetbrains.idea-ultimate
+    jetbrains.idea
+    jetbrains.clion
     jetbrains.phpstorm
     toolbox
     plex-desktop

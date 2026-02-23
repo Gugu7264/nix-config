@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   home.packages = with pkgs; [
     zsh
@@ -19,8 +24,14 @@
 
     historySubstringSearch = {
       enable = true;
-      searchUpKey = ["^[[A" "^[OA"];
-      searchDownKey = ["^[[B" "^[OB"];
+      searchUpKey = [
+        "^[[A"
+        "^[OA"
+      ];
+      searchDownKey = [
+        "^[[B"
+        "^[OB"
+      ];
     };
 
     plugins = [

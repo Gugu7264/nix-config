@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   micLedWatcher = pkgs.writeShellApplication {
     name = "mic-led-watcher";
 
@@ -27,7 +28,8 @@
       done
     '';
   };
-in {
+in
+{
   services.udev.extraRules = ''
     SUBSYSTEM=="leds", KERNEL=="platform::micmute", MODE="0666"
   '';
@@ -35,7 +37,7 @@ in {
   systemd.user.services.mic-led-watcher = {
     description = "ThinkPad Mic Mute LED Watcher";
 
-    wantedBy = ["default.target"];
+    wantedBy = [ "default.target" ];
     after = [
       "pipewire.service"
       "wireplumber.service"

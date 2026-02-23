@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   rnnoise_config = {
     "context.modules" = [
@@ -20,7 +25,10 @@ let
               }
             ];
           };
-          "audio.position" = ["FL" "FR"];
+          "audio.position" = [
+            "FL"
+            "FR"
+          ];
           "capture.props" = {
             "node.name" = "effect_input.rnnoise";
             "node.passive" = true;
@@ -33,7 +41,8 @@ let
       }
     ];
   };
-in {
+in
+{
   security.rtkit.enable = true;
   hardware.enableRedistributableFirmware = true;
 
@@ -47,7 +56,10 @@ in {
       pipewire = {
         "context.properties" = {
           "default.clock.rate" = 48000;
-          "default.clock.alloed-rates" = [48000 96000];
+          "default.clock.alloed-rates" = [
+            48000
+            96000
+          ];
           "default.clock.quantum" = 32;
           "default.clock.min-quantum" = 32;
           "default.clock.max-quantum" = 64;

@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   services.udev.packages = [ pkgs.chromium ];
   services.udev.extraRules = ''

@@ -1,8 +1,16 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   services.printing = {
     enable = true;
     browsing = true;
-    drivers = [pkgs.hplipWithPlugin pkgs.pantum-driver];
+    drivers = [
+      pkgs.hplipWithPlugin
+      pkgs.pantum-driver
+    ];
   };
 }

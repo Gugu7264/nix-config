@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   home.packages = with pkgs; [
     nautilus
     xwayland-satellite
@@ -14,19 +15,21 @@
   programs.niri = {
     settings = {
       workspaces = {
-        "chat" = {};
-        "ws-1" = {};
-        "ws-2" = {};
-        "ws-3" = {};
-        "ws-4" = {};
+        "chat" = { };
+        "ws-1" = { };
+        "ws-2" = { };
+        "ws-3" = { };
+        "ws-4" = { };
       };
       window-rules = [
         {
           matches = [
-            {app-id = "discord";}
-            {app-id = "Slack";}
+            { app-id = "discord"; }
+            { app-id = "Slack"; }
           ];
-          default-column-width = {proportion = 0.95;};
+          default-column-width = {
+            proportion = 0.95;
+          };
           open-on-workspace = "chat";
           open-focused = false;
         }
@@ -37,7 +40,9 @@
               at-startup = true;
             }
           ];
-          default-column-width = {proportion = 1.0;};
+          default-column-width = {
+            proportion = 1.0;
+          };
           open-on-workspace = "1";
           open-focused = false;
         }
@@ -57,10 +62,10 @@
           ];
         }
         # {argv = ["kanshi"];}
-        {argv = ["waybar"];}
-        {argv = ["slack"];}
-        {argv = ["discord"];}
-        {argv = ["firefox"];}
+        { argv = [ "waybar" ]; }
+        { argv = [ "slack" ]; }
+        { argv = [ "discord" ]; }
+        { argv = [ "firefox" ]; }
       ];
       input = {
         keyboard = {
@@ -87,9 +92,9 @@
       };
       layout = {
         preset-column-widths = [
-          {proportion = 0.33;}
-          {proportion = 0.5;}
-          {proportion = 1.0;}
+          { proportion = 0.33; }
+          { proportion = 0.5; }
+          { proportion = 1.0; }
         ];
       };
 
@@ -110,7 +115,7 @@
         "XF86MonBrightnessUp".action = spawn-sh "/run/current-system/sw/bin/light -A 5";
         "XF86AudioMicMute".action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle";
         "Mod+Shift+E".action = quit;
-        "Mod+Ctrl+Shift+E".action = quit {skip-confirmation = true;};
+        "Mod+Ctrl+Shift+E".action = quit { skip-confirmation = true; };
 
         "Mod+Return".action = spawn "alacritty";
         "Mod+equal".action = set-column-width "-10%";
@@ -142,9 +147,15 @@
         "Mod+F".action = fullscreen-window;
         "Mod+Shift+Q".action = close-window;
 
-        "Print".action.screenshot = {show-pointer = false;};
-        "Shift+Print".action.screenshot-screen = {write-to-disk = true;};
-        "Ctrl+Print".action.screenshot-window = {write-to-disk = true;};
+        "Print".action.screenshot = {
+          show-pointer = false;
+        };
+        "Shift+Print".action.screenshot-screen = {
+          write-to-disk = true;
+        };
+        "Ctrl+Print".action.screenshot-window = {
+          write-to-disk = true;
+        };
 
         "Mod+R".action = switch-preset-column-width;
 

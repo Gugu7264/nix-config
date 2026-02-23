@@ -2,7 +2,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     inputs.nixvim.homeModules.nixvim
   ];
@@ -67,9 +68,9 @@
         enable = true;
         autoEnableSources = true;
         settings.sources = [
-          {name = "nvim_lsp";}
-          {name = "path";}
-          {name = "buffer";}
+          { name = "nvim_lsp"; }
+          { name = "path"; }
+          { name = "buffer"; }
         ];
       };
 
@@ -107,7 +108,7 @@
           };
 
           formatters_by_ft = {
-            python = ["black"];
+            python = [ "black" ];
           };
         };
       };

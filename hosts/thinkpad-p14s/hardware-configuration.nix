@@ -7,20 +7,30 @@
   pkgs,
   modulesPath,
   ...
-}: {
+}:
+{
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
   boot = {
-    kernelModules = ["kvm-amd"];
-    extraModulePackages = [];
+    kernelModules = [ "kvm-amd" ];
+    extraModulePackages = [ ];
     initrd = {
-      availableKernelModules = ["nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod"];
-      kernelModules = ["dm-snapshot" "cryptd"];
+      availableKernelModules = [
+        "nvme"
+        "xhci_pci"
+        "thunderbolt"
+        "usb_storage"
+        "sd_mod"
+      ];
+      kernelModules = [
+        "dm-snapshot"
+        "cryptd"
+      ];
 
       luks.devices."cryptroot" = {
         device = "/dev/disk/by-label/NixOS-Encrypted";
-        crypttabExtraOpts = ["fido2-device=auto"];
+        crypttabExtraOpts = [ "fido2-device=auto" ];
       };
     };
   };
@@ -33,11 +43,14 @@
   fileSystems."/boot" = {
     device = "/dev/disk/by-label/NixOS-Boot";
     fsType = "vfat";
-    options = ["fmask=0022" "dmask=0022"];
+    options = [
+      "fmask=0022"
+      "dmask=0022"
+    ];
   };
 
   swapDevices = [
-    {device = "/dev/disk/by-label/NIXSWAP";}
+    { device = "/dev/disk/by-label/NIXSWAP"; }
   ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

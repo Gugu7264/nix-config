@@ -3,10 +3,12 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   nix.settings.experimental-features = "nix-command flakes";
   nixpkgs.config.allowUnfree = false;
-  nixpkgs.config.allowUnfreePredicate = pkg:
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
     builtins.elem (lib.getName pkg) [
       "1password"
       "discord"

@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos/boot.nix
@@ -27,7 +28,7 @@
   networking = {
     hostName = "thinkpad-p14s";
     networkmanager.enable = true;
-    firewall.allowedTCPPorts = [631];
+    firewall.allowedTCPPorts = [ 631 ];
   };
 
   boot = {
@@ -80,7 +81,15 @@
   users.users.gurvanbk = {
     isNormalUser = true;
     description = "Gurvan BK";
-    extraGroups = ["networkmanager" "wheel" "input" "video" "docker" "dialout" "plugdev"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "input"
+      "video"
+      "docker"
+      "dialout"
+      "plugdev"
+    ];
     shell = pkgs.zsh;
   };
 
@@ -93,21 +102,19 @@
       jupyter-server = prev.jupyter-server.overrideAttrs (old: {
         doCheck = false;
       });
-      pythonPackagesExtensions =
-        prev.pythonPackagesExtensions
-        ++ [
-          (python-final: python-prev: {
-            django = python-prev.django.overridePythonAttrs (old: {
-              doCheck = false;
-            });
-            twisted = python-prev.twisted.overridePythonAttrs (old: {
-              doCheck = false;
-            });
-            jupyter-server = python-prev.jupyter-server.overridePythonAttrs (old: {
-              doCheck = false;
-            });
-          })
-        ];
+      pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
+        (python-final: python-prev: {
+          django = python-prev.django.overridePythonAttrs (old: {
+            doCheck = false;
+          });
+          twisted = python-prev.twisted.overridePythonAttrs (old: {
+            doCheck = false;
+          });
+          jupyter-server = python-prev.jupyter-server.overridePythonAttrs (old: {
+            doCheck = false;
+          });
+        })
+      ];
     })
   ];
 

@@ -3,15 +3,14 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   nixpkgs.overlays = [
     (final: prev: {
-      openssh = prev.openssh.overrideAttrs (
-        old: {
-          configureFlags = old.configureFlags ++ ["--with-kerberos5"];
-          buildInputs = old.buildInputs ++ [prev.krb5];
-        }
-      );
+      openssh = prev.openssh.overrideAttrs (old: {
+        configureFlags = old.configureFlags ++ [ "--with-kerberos5" ];
+        buildInputs = old.buildInputs ++ [ prev.krb5 ];
+      });
     })
   ];
 
@@ -73,7 +72,8 @@
     nh
   ];
 
-  fonts.packages = with pkgs;
+  fonts.packages =
+    with pkgs;
     [
       fira-code
       fira-code-symbols
@@ -81,7 +81,5 @@
       noto-fonts
       noto-fonts-color-emoji
     ]
-    ++ builtins.filter lib.attrsets.isDerivation (
-      builtins.attrValues pkgs.nerd-fonts
-    );
+    ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 }

@@ -89,6 +89,7 @@
       "docker"
       "dialout"
       "plugdev"
+      "libvirtd"
     ];
     shell = pkgs.zsh;
   };

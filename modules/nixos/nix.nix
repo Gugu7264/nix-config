@@ -23,6 +23,7 @@
       "datagrip"
       "hplip"
       "pantum-driver"
+      "stm32cubemx"
     ];
 
   programs.nix-ld.enable = true;

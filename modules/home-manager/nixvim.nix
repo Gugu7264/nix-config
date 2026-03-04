@@ -39,6 +39,18 @@
 
     globals.mapleader = " ";
 
+    keymaps = [
+      {
+        mode = "n";
+        key = "<leader>e";
+        action = "<cmd>Oil<CR>";
+        options = {
+          desc = "Open parent directory (Oil)";
+          silent = true;
+        };
+      }
+    ];
+
     clipboard = {
       register = "unnamedplus";
       providers.wl-copy.enable = true;

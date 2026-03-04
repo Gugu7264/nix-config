@@ -119,5 +119,23 @@
     })
   ];
 
+  nix.settings = {
+    max-jobs = "auto";
+    cores = 0; # use all cores
+  };
+  zramSwap.enable = true;
+  services.earlyoom = {
+    enable = true;
+    freeMemThreshold = 5; # Tue si < 5% de RAM libre
+    freeSwapThreshold = 5; # Tue si < 5% de Swap libre
+    extraArgs = [
+      "-g" # Tue tout le groupe de processus (évite que les enfants survivent)
+      "--prefer"
+      "'^(.*/)?(java|node|clion|electron)$'" # Cible en priorité les gros consommateurs
+      "--avoid"
+      "'^(.*/)?(sshd|systemd|X|wayland|niri)$'" # Évite de tuer ton interface graphique
+    ];
+  };
+
   system.stateVersion = "25.05";
 }

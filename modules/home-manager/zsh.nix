@@ -94,4 +94,9 @@
       gorush = "cd /home/gurvanbk/epita/YAKA/rush-creeps";
     };
   };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 }

@@ -14,6 +14,9 @@
 
   programs.niri = {
     settings = {
+      environment = {
+        DMS_DISABLE_MATUGEN = "1";
+      };
       workspaces = {
         "chat" = { };
         "ws-1" = { };
@@ -62,7 +65,7 @@
           ];
         }
         # {argv = ["kanshi"];}
-        { argv = [ "waybar" ]; }
+        # { argv = [ "waybar" ]; }
         { argv = [ "slack" ]; }
         { argv = [ "discord" ]; }
         { argv = [ "firefox" ]; }

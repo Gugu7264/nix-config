@@ -5,7 +5,8 @@ _: {
     ../../modules/home-manager/git.nix
     ../../modules/home-manager/walker.nix
     ../../modules/home-manager/niri.nix
-    ../../modules/home-manager/mako.nix
+    ../../modules/home-manager/dms.nix
+    # ../../modules/home-manager/mako.nix # dms does notification server too
     ../../modules/home-manager/alacritty.nix
     ../../modules/home-manager/hyprlock.nix
     ../../modules/home-manager/nixvim.nix

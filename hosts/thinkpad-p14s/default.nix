@@ -18,7 +18,6 @@
     ../../modules/nixos/packages.nix
     ../../modules/nixos/steam.nix
     ../../modules/nixos/avahi.nix
-    ../../modules/nixos/mysql.nix
     ../../modules/nixos/ocaml.nix
     ../../modules/nixos/firefox.nix
     ../../modules/nixos/niri.nix

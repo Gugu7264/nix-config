@@ -5,6 +5,7 @@ _: {
       signByDefault = true;
       format = "openpgp";
     };
+    lfs.enable = true;
     settings = {
       user.email = "gurvan.biguet-kerloch@epita.fr";
       user.name = "Gurvan Biguet--Kerloc'h";

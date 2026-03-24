@@ -11,6 +11,7 @@ _: {
     ../../modules/home-manager/hyprlock.nix
     ../../modules/home-manager/nixvim.nix
     # ../../modules/home-manager/kanshi.nix
+    ../../modules/home-manager/direnv.nix
   ];
 
   home = {

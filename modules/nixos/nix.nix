@@ -24,6 +24,9 @@
       "hplip"
       "pantum-driver"
       "stm32cubemx"
+      "lens-desktop"
+      "quartus-prime-lite"
+      "quartus-prime-lite-unwrapped"
     ];
 
   programs.nix-ld.enable = true;

@@ -17,5 +17,19 @@
     cmake # Build system (used by CLion)
     gnumake # Make (used by CMake)
     stm32cubemx # The standalone ST configurator
+
+    # INFO8
+    kubectl
+    lens
+
+    # VHDL
+    ghdl-llvm
+    surfer
+    (quartus-prime-lite.override {
+      supportedDevices = [
+        "Cyclone V"
+        "MAX 10 FPGA"
+      ];
+    })
   ];
 }

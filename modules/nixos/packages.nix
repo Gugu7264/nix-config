@@ -70,6 +70,7 @@
     yubikey-manager
     gnupg
     nh
+    brightnessctl
   ];
 
   fonts.packages =

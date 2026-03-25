@@ -114,8 +114,8 @@
           action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
           allow-when-locked = true;
         };
-        "XF86MonBrightnessDown".action = spawn-sh "/run/current-system/sw/bin/light -U 5";
-        "XF86MonBrightnessUp".action = spawn-sh "/run/current-system/sw/bin/light -A 5";
+        "XF86MonBrightnessDown".action = spawn-sh "/run/current-system/sw/bin/brightnessctl set 5%-";
+        "XF86MonBrightnessUp".action = spawn-sh "/run/current-system/sw/bin/brightnessctl set 5%+";
         "XF86AudioMicMute".action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle";
         "Mod+Shift+E".action = quit;
         "Mod+Ctrl+Shift+E".action = quit { skip-confirmation = true; };

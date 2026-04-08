@@ -25,11 +25,11 @@
     # VHDL
     ghdl-llvm
     surfer
-    (quartus-prime-lite.override {
-      supportedDevices = [
-        "Cyclone V"
-        "MAX 10 FPGA"
-      ];
-    })
+    # (quartus-prime-lite.override {
+    #   supportedDevices = [
+    #     "Cyclone V"
+    #     "MAX 10 FPGA"
+    #   ];
+    # })
   ];
 }

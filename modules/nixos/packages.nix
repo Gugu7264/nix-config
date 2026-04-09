@@ -54,7 +54,6 @@
     vscode
     jetbrains.idea
     jetbrains.clion
-    jetbrains.phpstorm
     toolbox
     plex-desktop
     cura-appimage
@@ -66,7 +65,6 @@
     # '')
     rclone
     php
-    jetbrains.datagrip
     yubikey-manager
     gnupg
     nh

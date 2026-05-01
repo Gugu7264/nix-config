@@ -124,6 +124,15 @@
           };
         };
       };
+
+      markdown-preview = {
+        enable = true;
+        settings = {
+          auto_start = true;
+          auto_close = true;
+          theme = "light";
+        };
+      };
     };
   };
 }

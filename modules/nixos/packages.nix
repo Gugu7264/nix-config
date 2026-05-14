@@ -20,7 +20,7 @@
   environment.systemPackages = with pkgs; [
     _1password-gui
     signal-desktop
-    wasistlos
+    # wasistlos
     tree
     btop
     lxqt.lxqt-policykit

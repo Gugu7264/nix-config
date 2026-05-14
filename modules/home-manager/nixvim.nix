@@ -65,6 +65,7 @@
       nixd.enable = true;
       pylsp.enable = true;
       yamlls.enable = true;
+      eslint.enable = true;
     };
 
     plugins = {

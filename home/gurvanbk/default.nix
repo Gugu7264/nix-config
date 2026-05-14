@@ -12,6 +12,7 @@ _: {
     ../../modules/home-manager/nixvim.nix
     # ../../modules/home-manager/kanshi.nix
     ../../modules/home-manager/direnv.nix
+    ../../modules/home-manager/zen-browser.nix
   ];
 
   home = {

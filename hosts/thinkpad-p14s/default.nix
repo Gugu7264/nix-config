@@ -22,6 +22,7 @@
     ../../modules/nixos/firefox.nix
     ../../modules/nixos/niri.nix
     ../../modules/nixos/gistre.nix
+    ../../modules/nixos/attic.nix
   ];
 
   networking = {
@@ -88,9 +89,34 @@
       "dialout"
       "plugdev"
       "libvirtd"
+      "uinput"
     ];
     shell = pkgs.zsh;
   };
+
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true; # Si tu es sous un environnement type Hyprland/Sway
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gnome
+      pkgs.xdg-desktop-portal-gtk
+    ];
+    config.common.default = "*"; # Autorise les portails à communiquer entre eux
+  };
+
+  # Important pour que les applications sachent quel portail utiliser
+  services.dbus.enable = true;
+
+  # Ajoute le paquet
+  environment.systemPackages = [ pkgs.rkvm ];
+
+  # Nécessaire pour l'injection d'input
+  boot.kernelModules = [ "uinput" ];
+
+  # Règle Udev pour l'accès au module uinput
+  services.udev.extraRules = ''
+    KERNEL=="uinput", GROUP="uinput", MODE="0660"
+  '';
 
   nixpkgs.overlays = [
     (final: prev: {

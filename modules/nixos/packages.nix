@@ -7,12 +7,15 @@
 {
   nixpkgs.overlays = [
     (final: prev: {
-      openssh = prev.openssh.overrideAttrs (old: {
-        configureFlags = old.configureFlags ++ [ "--with-kerberos5" ];
-        buildInputs = old.buildInputs ++ [ prev.krb5 ];
-      });
+      sshfs = prev.sshfs.override {
+        callPackage = prev.newScope {
+          openssh = pkgs.openssh_gssapi;
+        };
+      };
     })
   ];
+
+  programs.ssh.package = pkgs.openssh_gssapi;
 
   environment.systemPackages = with pkgs; [
     _1password-gui
@@ -69,6 +72,9 @@
     gnupg
     nh
     brightnessctl
+
+    lan-mouse # use keyboard and mouse on other devices
+    libei
   ];
 
   fonts.packages =

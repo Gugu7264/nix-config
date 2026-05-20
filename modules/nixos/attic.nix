@@ -23,10 +23,11 @@
   nix.buildMachines = [
     {
       hostName = "10.201.3.146";
-      sshUser = "root";
+      sshUser = "nix-builder";
       protocol = "ssh-ng";
       # Tell Nix what architectures this builder can compile
       system = "x86_64-linux";
+      sshKey = "/root/.ssh/id_nix_builder";
       # Let Nix know this machine is fast
       maxJobs = 8;
       speedFactor = 2;
@@ -38,6 +39,8 @@
       ];
     }
   ];
+
+  nix.distributedBuilds = true;
 
   # Tell your laptop to prefer using distributed builders over its own CPU
   nix.settings.builders-use-substitutes = true;

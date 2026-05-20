@@ -31,6 +31,7 @@ let
 in
 {
   services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="leds", KERNEL=="platform::micmute", RUN+="${pkgs.coreutils}/bin/chmod a+w /sys/class/leds/%k/brightness"
     SUBSYSTEM=="leds", KERNEL=="platform::micmute", MODE="0666"
   '';
 

@@ -34,6 +34,15 @@
       ];
     };
 
+    history = {
+      size = 1000000;
+      save = 1000000;
+      path = "$HOME/.zsh_history";
+      ignoreDups = true;
+      share = true; # Share history between different sessions
+      extended = true; # Save timestamps for each command
+    };
+
     plugins = [
       {
         name = "powerlevel10k";
@@ -66,6 +75,19 @@
       export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+    '';
+
+    initExtra = ''
+      # Don't record a line if it's a duplicate of the previous one
+      setopt HIST_IGNORE_DUPS
+      # Remove older duplicate entries from history
+      setopt HIST_IGNORE_ALL_DUPS
+      # Don't write duplicate entries in the history file
+      setopt HIST_SAVE_NO_DUPS
+      # Delete old recorded entry if new entry is a duplicate
+      setopt HIST_FIND_NO_DUPS
+      # Don't record an entry starting with a space
+      setopt HIST_IGNORE_SPACE
     '';
 
     shellAliases = {

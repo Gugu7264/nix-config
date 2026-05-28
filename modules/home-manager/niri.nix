@@ -39,7 +39,7 @@
         {
           matches = [
             {
-              app-id = "firefox";
+              app-id = "zen";
               at-startup = true;
             }
           ];
@@ -68,7 +68,7 @@
         # { argv = [ "waybar" ]; }
         { argv = [ "slack" ]; }
         { argv = [ "discord" ]; }
-        { argv = [ "firefox" ]; }
+        { argv = [ "zen" ]; }
       ];
       input = {
         keyboard = {

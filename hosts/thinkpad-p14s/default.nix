@@ -19,7 +19,7 @@
     ../../modules/nixos/steam.nix
     ../../modules/nixos/avahi.nix
     # ../../modules/nixos/ocaml.nix
-    ../../modules/nixos/firefox.nix
+    # ../../modules/nixos/firefox.nix
     ../../modules/nixos/niri.nix
     ../../modules/nixos/gistre.nix
     ../../modules/nixos/attic.nix

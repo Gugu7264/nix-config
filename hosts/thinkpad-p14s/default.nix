@@ -15,12 +15,17 @@
     ../../modules/nixos/libvirt.nix
     ../../modules/nixos/udev.nix
     ../../modules/nixos/gnupg.nix
-    ../../modules/nixos/packages.nix
+    ../../modules/nixos/packages/default.nix
     ../../modules/nixos/steam.nix
     ../../modules/nixos/avahi.nix
     ../../modules/nixos/niri.nix
     ../../modules/nixos/gistre.nix
     ../../modules/nixos/attic.nix
+    ../../modules/nixos/security.nix
+    ../../modules/nixos/power.nix
+    ../../modules/nixos/input.nix
+    ../../modules/nixos/earlyoom.nix
+    ../../modules/nixos/desktop.nix
   ];
 
   networking = {
@@ -32,48 +37,13 @@
   boot = {
     initrd = {
       systemd.enable = true;
-      luks.fido2Support = false; # disable old support
+      luks.fido2Support = false;
     };
   };
 
-  services = {
-    murmur.bonjour = true;
-    tlp = {
-      enable = true;
-      settings = {
-        START_CHARGE_THRESH_BAT0 = 75;
-        STOP_CHARGE_THRESH_BAT0 = 80;
-        CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
-        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-        PLATFORM_PROFILE_ON_AC = "performance";
-        PLATFORM_PROFILE_ON_BAT = "low-power";
-      };
-    };
-    upower.enable = true;
-    fwupd.enable = true;
-    fprintd.enable = true;
-  };
+  services.murmur.bonjour = true;
 
   programs.zsh.enable = true;
-
-  security.pam = {
-    services = {
-      sudo.u2fAuth = true;
-      login.u2fAuth = true;
-      hyprlock = {
-        text = ''
-          auth       sufficient     pam_unix.so try_first_pass likeauth nullok
-          auth       sufficient     pam_fprintd.so
-          auth       include        system-auth
-
-          account    include        system-auth
-          password   include        system-auth
-          session    include        system-auth
-        '';
-      };
-    };
-    u2f.settings.cue = true;
-  };
 
   users.users.gurvanbk = {
     isNormalUser = true;
@@ -91,30 +61,6 @@
     ];
     shell = pkgs.zsh;
   };
-
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true; # Si tu es sous un environnement type Hyprland/Sway
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gnome
-      pkgs.xdg-desktop-portal-gtk
-    ];
-    config.common.default = "*"; # Autorise les portails à communiquer entre eux
-  };
-
-  # Important pour que les applications sachent quel portail utiliser
-  services.dbus.enable = true;
-
-  # Ajoute le paquet
-  environment.systemPackages = [ pkgs.rkvm ];
-
-  # Nécessaire pour l'injection d'input
-  boot.kernelModules = [ "uinput" ];
-
-  # Règle Udev pour l'accès au module uinput
-  services.udev.extraRules = ''
-    KERNEL=="uinput", GROUP="uinput", MODE="0660"
-  '';
 
   nixpkgs.overlays = [
     (final: prev: {
@@ -143,21 +89,9 @@
 
   nix.settings = {
     max-jobs = "auto";
-    cores = 0; # use all cores
+    cores = 0;
   };
   zramSwap.enable = true;
-  services.earlyoom = {
-    enable = true;
-    freeMemThreshold = 5; # Tue si < 5% de RAM libre
-    freeSwapThreshold = 5; # Tue si < 5% de Swap libre
-    extraArgs = [
-      "-g" # Tue tout le groupe de processus (évite que les enfants survivent)
-      "--prefer"
-      "'^(.*/)?(java|node|clion|electron)$'" # Cible en priorité les gros consommateurs
-      "--avoid"
-      "'^(.*/)?(sshd|systemd|X|wayland|niri)$'" # Évite de tuer ton interface graphique
-    ];
-  };
 
   system.stateVersion = "25.05";
 }

@@ -1,5 +1,6 @@
-_: {
+{ pkgs, ... }: {
   imports = [
+    ./packages.nix
     ../../modules/home-manager/zsh.nix
     ../../modules/home-manager/waybar.nix
     ../../modules/home-manager/git.nix
@@ -20,6 +21,8 @@ _: {
     homeDirectory = "/home/gurvanbk";
     stateVersion = "24.11";
   };
+
+  home.enableNixpkgsReleaseCheck = false;
 
   programs.nixvim.enable = true;
 

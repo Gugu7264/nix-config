@@ -1,19 +1,7 @@
 { pkgs, ... }:
 {
+  # Only tools that are useful system-wide or for multiple users
   environment.systemPackages = with pkgs; [
-    tree
-    btop
-    bat
-    unzip
-    zip
-    ripgrep
-    fd
-    curlFull
-    wget
-    hyperfine
-    tldr
-    man-pages
-    man-pages-posix
     brightnessctl
     libnotify
     wl-clipboard
@@ -24,5 +12,11 @@
     lan-mouse
     libei
     yubikey-manager
+    unzip
+    zip
+    curlFull
+    wget
+    man-pages
+    man-pages-posix
   ];
 }

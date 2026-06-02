@@ -18,7 +18,5 @@
     font-awesome
     noto-fonts
     noto-fonts-color-emoji
-    nerd-fonts.fira-code
-    nerd-fonts.jetbrains-mono
-  ];
+  ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 }

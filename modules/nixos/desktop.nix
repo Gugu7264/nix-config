@@ -12,11 +12,14 @@
 
   services.dbus.enable = true;
 
-  fonts.packages = with pkgs; [
-    fira-code
-    fira-code-symbols
-    font-awesome
-    noto-fonts
-    noto-fonts-color-emoji
-  ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+  fonts.packages =
+    with pkgs;
+    [
+      fira-code
+      fira-code-symbols
+      font-awesome
+      noto-fonts
+      noto-fonts-color-emoji
+    ]
+    ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 }

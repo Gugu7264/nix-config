@@ -7,7 +7,7 @@
 {
   environment.systemPackages = with pkgs; [
     mosquitto
-    kicad
+    # kicad
     node-red
     arduino-ide
 

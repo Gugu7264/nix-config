@@ -16,11 +16,11 @@
     openocd # The debugging server
     cmake # Build system (used by CLion)
     gnumake # Make (used by CMake)
-    stm32cubemx # The standalone ST configurator
+    # stm32cubemx # The standalone ST configurator
 
     # INFO8
-    kubectl
-    lens
+    # kubectl
+    # lens
 
     # VHDL
     ghdl-llvm

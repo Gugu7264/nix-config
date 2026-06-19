@@ -56,7 +56,7 @@ in
       pipewire = {
         "context.properties" = {
           "default.clock.rate" = 48000;
-          "default.clock.alloed-rates" = [
+          "default.clock.allowed-rates" = [
             48000
             96000
           ];

@@ -46,7 +46,7 @@
           default-column-width = {
             proportion = 1.0;
           };
-          open-on-workspace = "1";
+          open-on-workspace = "ws-1";
           open-focused = false;
         }
       ];

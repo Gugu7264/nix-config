@@ -66,6 +66,18 @@
       pylsp.enable = true;
       yamlls.enable = true;
       eslint.enable = true;
+      jdtls = {
+        enable = true;
+        config = {
+          cmd = [
+            "${pkgs.jdt-language-server}/bin/jdtls"
+            "--jvm-arg=-javaagent:${pkgs.lombok}/share/java/lombok.jar"
+          ];
+          settings = {
+            java.format.enabled = false;
+          };
+        };
+      };
     };
 
     plugins = {

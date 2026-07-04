@@ -20,6 +20,7 @@
       font-awesome
       noto-fonts
       noto-fonts-color-emoji
-    ]
-    ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+      nerd-fonts.symbols-only
+      cascadia-code
+    ];
 }

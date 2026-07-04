@@ -13,7 +13,7 @@
     # jetbrains.clion
     # plex-desktop
     # cura-appimage
-    imagemagick
+    prismlauncher # minecraft launcher
 
     # CLI Tools
     tree
@@ -21,6 +21,7 @@
     fd
     hyperfine
     tldr
+    imagemagick
 
     # NOTE: might have been updated to work, check nixpkgs PR
     # (writeShellScriptBin "digikam" ''

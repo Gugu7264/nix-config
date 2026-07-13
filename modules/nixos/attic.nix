@@ -18,6 +18,14 @@
       "root"
       "@wheel"
     ];
+    # Build from source if the binary cache is unreachable
+    fallback = true;
+
+    # Give up connecting to the cache after 3 seconds (default is 15)
+    connect-timeout = 5;
+
+    # Only try to download once (default is 5)
+    download-attempts = 2;
   };
 
   nix.buildMachines = [

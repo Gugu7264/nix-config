@@ -15,6 +15,7 @@
     # ../../modules/home-manager/kanshi.nix
     ../../modules/home-manager/direnv.nix
     ../../modules/home-manager/zen-browser.nix
+    ../../modules/home-manager/antigravity.nix
   ];
 
   home = {

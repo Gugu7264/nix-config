@@ -5,7 +5,11 @@
   ...
 }:
 {
-  nix.settings.experimental-features = "nix-command flakes";
+  nix.settings = {
+    experimental-features = "nix-command flakes";
+    keep-outputs = true;
+    keep-derivations = true;
+  };
   nixpkgs.config.allowUnfree = false;
   nixpkgs.config.allowUnfreePredicate =
     pkg:

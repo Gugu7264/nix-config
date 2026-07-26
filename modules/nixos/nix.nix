@@ -1,14 +1,7 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ lib, ... }:
 {
   nix.settings = {
     experimental-features = "nix-command flakes";
-    keep-outputs = true;
-    keep-derivations = true;
   };
   nixpkgs.config.allowUnfree = false;
   nixpkgs.config.allowUnfreePredicate =
@@ -32,5 +25,6 @@
     ];
 
   programs.nix-ld.enable = true;
+  services.envfs.enable = true;
   documentation.dev.enable = true;
 }

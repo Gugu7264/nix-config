@@ -9,6 +9,7 @@
   ];
 
   programs.nixvim = {
+    nixpkgs.source = inputs.nixpkgs;
     defaultEditor = true;
 
     colorschemes.catppuccin = {

@@ -62,30 +62,7 @@
     shell = pkgs.zsh;
   };
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      xdg-desktop-portal = prev.xdg-desktop-portal.overrideAttrs (old: {
-        doCheck = false;
-      });
-
-      jupyter-server = prev.jupyter-server.overrideAttrs (old: {
-        doCheck = false;
-      });
-      pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
-        (python-final: python-prev: {
-          django = python-prev.django.overridePythonAttrs (old: {
-            doCheck = false;
-          });
-          twisted = python-prev.twisted.overridePythonAttrs (old: {
-            doCheck = false;
-          });
-          jupyter-server = python-prev.jupyter-server.overridePythonAttrs (old: {
-            doCheck = false;
-          });
-        })
-      ];
-    })
-  ];
+  nixpkgs.hostPlatform = "x86_64-linux";
 
   nix.settings = {
     max-jobs = "auto";

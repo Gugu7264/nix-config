@@ -23,7 +23,7 @@
 
     nixvim = {
       url = "github:nix-community/nixvim";
-      # inputs.nixpkgs.follows = "nixpkgs"; # triggers a warning when this is present
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixos-hardware = {
@@ -53,7 +53,6 @@
       nixosConfigurations = {
         thinkpad-p14s = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
-          system = "x86_64-linux";
           modules = [
             ./hosts/thinkpad-p14s/default.nix
             inputs.home-manager.nixosModules.default
@@ -72,5 +71,26 @@
       };
 
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-tree;
+
+      devShells.x86_64-linux.default = nixpkgs.legacyPackages.x86_64-linux.mkShell {
+        name = "nix-config-dev";
+        packages = with nixpkgs.legacyPackages.x86_64-linux; [
+          git
+        ];
+        shellHook = ''
+          if [ -d .git ] && [ ! -f .git/hooks/pre-commit ]; then
+            mkdir -p .git/hooks
+            cat << 'EOF' > .git/hooks/pre-commit
+#!/usr/bin/env bash
+set -e
+echo "Running statix and deadnix checks..."
+nix run nixpkgs#statix -- check .
+nix run nixpkgs#deadnix -- .
+EOF
+            chmod +x .git/hooks/pre-commit
+            echo "Installed pre-commit hook in .git/hooks/pre-commit"
+          fi
+        '';
+      };
     };
 }

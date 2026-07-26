@@ -1,4 +1,4 @@
-{ ... }:
+_:
 {
   # This file is now empty of direct package declarations
   # as GUI apps have moved to Home Manager.

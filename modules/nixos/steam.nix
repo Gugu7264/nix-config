@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+_:
 {
   programs.steam.enable = true;
   programs.gamescope.enable = true;

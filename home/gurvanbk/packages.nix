@@ -2,7 +2,6 @@
 {
   home.packages = with pkgs; [
     # GUI Apps
-    _1password-gui
     signal-desktop
     discord
     slack

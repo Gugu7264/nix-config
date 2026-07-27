@@ -26,6 +26,7 @@
     ../../modules/nixos/input.nix
     ../../modules/nixos/earlyoom.nix
     ../../modules/nixos/desktop.nix
+    ../../modules/nixos/1password.nix
   ];
 
   networking = {

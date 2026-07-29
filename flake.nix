@@ -78,18 +78,18 @@
           git
         ];
         shellHook = ''
-          if [ -d .git ] && [ ! -f .git/hooks/pre-commit ]; then
-            mkdir -p .git/hooks
-            cat << 'EOF' > .git/hooks/pre-commit
-#!/usr/bin/env bash
-set -e
-echo "Running statix and deadnix checks..."
-nix run nixpkgs#statix -- check .
-nix run nixpkgs#deadnix -- .
-EOF
-            chmod +x .git/hooks/pre-commit
-            echo "Installed pre-commit hook in .git/hooks/pre-commit"
-          fi
+                    if [ -d .git ] && [ ! -f .git/hooks/pre-commit ]; then
+                      mkdir -p .git/hooks
+                      cat << 'EOF' > .git/hooks/pre-commit
+          #!/usr/bin/env bash
+          set -e
+          echo "Running statix and deadnix checks..."
+          nix run nixpkgs#statix -- check .
+          nix run nixpkgs#deadnix -- .
+          EOF
+                      chmod +x .git/hooks/pre-commit
+                      echo "Installed pre-commit hook in .git/hooks/pre-commit"
+                    fi
         '';
       };
     };

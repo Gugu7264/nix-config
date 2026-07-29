@@ -12,15 +12,13 @@
 
   services.dbus.enable = true;
 
-  fonts.packages =
-    with pkgs;
-    [
-      fira-code
-      fira-code-symbols
-      font-awesome
-      noto-fonts
-      noto-fonts-color-emoji
-      nerd-fonts.symbols-only
-      cascadia-code
-    ];
+  fonts.packages = with pkgs; [
+    fira-code
+    fira-code-symbols
+    font-awesome
+    noto-fonts
+    noto-fonts-color-emoji
+    nerd-fonts.symbols-only
+    cascadia-code
+  ];
 }

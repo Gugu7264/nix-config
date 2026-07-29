@@ -6,7 +6,9 @@
 let
   agy-wrapped = pkgs.symlinkJoin {
     name = "google-antigravity-cli-wrapped";
-    paths = [ inputs.antigravity-nix.packages.${pkgs.stdenv.hostPlatform.system}.google-antigravity-cli ];
+    paths = [
+      inputs.antigravity-nix.packages.${pkgs.stdenv.hostPlatform.system}.google-antigravity-cli
+    ];
     buildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
       wrapProgram $out/bin/agy \

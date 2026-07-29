@@ -1,9 +1,11 @@
-_:
-{
+_: {
+  security.polkit.enable = true;
+
   security.pam = {
     services = {
       sudo.u2fAuth = true;
       login.u2fAuth = true;
+      polkit-1.u2fAuth = true;
       hyprlock = {
         text = ''
           auth       sufficient     pam_unix.so try_first_pass likeauth nullok

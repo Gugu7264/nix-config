@@ -75,7 +75,7 @@
         bindkey "^[[1;5C" forward-word
         bindkey "^[[1;5D" backward-word
 
-        submit () { git tag -ma "$1" && git push "$1" }
+        submit() {git tag -m "$1" "$1" && git push origin "$1"}
 
         export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 

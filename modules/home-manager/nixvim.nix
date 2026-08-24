@@ -71,7 +71,7 @@
       jsonls.enable = true;
       marksman.enable = true;
       nixd.enable = true;
-      pylsp.enable = true;
+      ruff.enable = true;
       yamlls.enable = true;
       eslint.enable = true;
       jdtls = {
@@ -138,10 +138,6 @@
           format_on_save = {
             lsp_fallback = true;
             timeout_ms = 500;
-          };
-
-          formatters_by_ft = {
-            python = [ "black" ];
           };
         };
       };

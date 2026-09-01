@@ -86,6 +86,7 @@
           };
         };
       };
+      typst_lsp.enable = true;
     };
 
     plugins = {
@@ -149,6 +150,10 @@
           auto_close = 1;
           theme = "light";
         };
+      };
+
+      typst-preview = {
+        enable = true;
       };
     };
   };

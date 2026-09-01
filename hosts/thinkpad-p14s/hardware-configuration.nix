@@ -7,10 +7,12 @@
   modulesPath,
   ...
 }:
+
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
+
   boot = {
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
@@ -22,25 +24,56 @@
         "usb_storage"
         "sd_mod"
       ];
-      kernelModules = [
-        "dm-snapshot"
-        "cryptd"
-      ];
-
+      kernelModules = [ ];
       luks.devices."cryptroot" = {
-        device = "/dev/disk/by-label/NixOS-Encrypted";
+        device = "/dev/disk/by-uuid/2af2871b-b938-456d-9757-a49215e98788";
         crypttabExtraOpts = [ "fido2-device=auto" ];
       };
     };
+    resumeDevice = "/dev/mapper/cryptroot";
+    kernelParams = [ "resume_offset=533760" ];
   };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-label/NIXROOT";
-    fsType = "ext4";
+    device = "/dev/mapper/cryptroot";
+    fsType = "btrfs";
+    options = [
+      "subvol=@"
+      "compress=zstd:3"
+      "noatime"
+    ];
+  };
+  fileSystems."/home" = {
+    device = "/dev/mapper/cryptroot";
+    fsType = "btrfs";
+    options = [
+      "subvol=@home"
+      "compress=zstd:3"
+      "noatime"
+    ];
+  };
+
+  fileSystems."/nix" = {
+    device = "/dev/mapper/cryptroot";
+    fsType = "btrfs";
+    options = [
+      "subvol=@nix"
+      "compress=zstd:3"
+      "noatime"
+    ];
+  };
+
+  fileSystems."/swap" = {
+    device = "/dev/mapper/cryptroot";
+    fsType = "btrfs";
+    options = [
+      "subvol=@swap"
+      "noatime"
+    ];
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-label/NixOS-Boot";
+    device = "/dev/disk/by-uuid/5397-CD38";
     fsType = "vfat";
     options = [
       "fmask=0022"
@@ -48,17 +81,7 @@
     ];
   };
 
-  swapDevices = [
-    { device = "/dev/disk/by-label/NIXSWAP"; }
-  ];
-
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp1s0f0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp2s0.useDHCP = lib.mkDefault true;
+  swapDevices = [ { device = "/swap/swapfile"; } ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

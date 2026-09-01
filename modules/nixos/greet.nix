@@ -1,7 +1,7 @@
 _: {
-  services.greetd.enable = true;
-
-  programs.regreet.enable = true;
-
-  services.accounts-daemon.enable = true;
+  services = {
+    greetd.enable = true;
+    displayManager.regreet.enable = true;
+    accounts-daemon.enable = true;
+  };
 }

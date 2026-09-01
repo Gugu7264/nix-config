@@ -11,6 +11,7 @@
       "1password-cli"
       "1password-gui"
       "discord"
+      "discord-unwrapped"
       "slack"
       "vscode"
       "idea"

@@ -14,7 +14,38 @@
     settings = {
       theme = "light";
       dynamicTheming = false;
-      # Add any other settings here
+      barConfigs = [
+        {
+          id = "default";
+          name = "Main Bar";
+          enabled = true;
+          position = 0;
+          screenPreferences = [ "all" ];
+          showOnLastDisplay = true;
+          leftWidgets = [
+            "launcherButton"
+            "workspaceSwitcher"
+            "focusedWindow"
+          ];
+          centerWidgets = [
+            "music"
+            "clock"
+            "weather"
+          ];
+          rightWidgets = [
+            "systemTray"
+            "clipboard"
+            "cpuUsage"
+            "memUsage"
+            "notificationButton"
+            "battery"
+            "controlCenterButton"
+          ];
+          spacing = 4;
+          innerPadding = 4;
+          maximizeDetection = false;
+        }
+      ];
     };
 
     session = {

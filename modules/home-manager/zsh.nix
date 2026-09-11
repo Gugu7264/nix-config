@@ -83,7 +83,7 @@
       '';
 
       shellAliases = {
-        cat = "bat -P";
+        # cat = "bat -P";
         v = "nvim";
 
         # Git aliases
@@ -105,7 +105,6 @@
         gbgD = "git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D";
         gb = "git branch";
         grpo = "git remote prune origin";
-        gorush = "cd /home/gurvanbk/epita/YAKA/rush-creeps";
       };
     };
 

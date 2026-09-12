@@ -17,6 +17,7 @@
       dankLauncherV2Size = "compact";
       closeNiriOverviewOnWindowFocus = true;
       niriOverviewOverlayEnabled = true;
+      enableFprint = true;
     };
 
     session = {

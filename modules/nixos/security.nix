@@ -10,8 +10,8 @@ _: {
       login.u2fAuth = true;
       polkit-1.u2fAuth = true;
       dankshell = {
-        u2fAuth = true;
-        fprintAuth = true;
+        u2fAuth = false;
+        fprintAuth = false;
       };
     };
     u2f.settings.cue = true;

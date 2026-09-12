@@ -12,30 +12,30 @@
     enable = true;
 
     settings = {
-      theme = "light";
-      dynamicTheming = false;
-      # Add any other settings here
+      currentThemeName = "purple";
+      cornerRadius = 16;
+      dankLauncherV2Size = "compact";
+      closeNiriOverviewOnWindowFocus = true;
+      niriOverviewOverlayEnabled = true;
     };
 
     session = {
       isLightMode = true;
-      # Add any other session state settings here
     };
 
     niri = {
       enableSpawn = true;
       includes = {
         enable = true;
-
         override = true;
-
         filesToInclude = [
           "alttab"
-          # "binds"
+          # "binds" # Managed in niri.nix for seamless integration with custom keybindings
           "colors"
           "layout"
           "outputs"
-          # "wpblur"
+          "windowrules" # Essential: keeps DMS windows/modals (app-id com.danklinux.dms) floating
+          "wpblur" # Blurred overview wallpaper layer
         ];
       };
     };

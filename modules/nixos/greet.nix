@@ -1,7 +1,16 @@
-_: {
+{ inputs, ... }:
+{
+  imports = [
+    inputs.dank-greeter.nixosModules.default
+  ];
+
   services = {
-    greetd.enable = true;
-    displayManager.regreet.enable = true;
     accounts-daemon.enable = true;
+  };
+
+  programs.dms-greeter = {
+    enable = true;
+    compositor.name = "niri";
+    configHome = "/home/gurvanbk";
   };
 }

@@ -6,7 +6,7 @@ _: {
       sudo.u2fAuth = true;
       login.u2fAuth = true;
       polkit-1.u2fAuth = true;
-      hyprlock = {
+      dankshell = {
         text = ''
           auth       sufficient     pam_unix.so try_first_pass likeauth nullok
           auth       sufficient     pam_fprintd.so

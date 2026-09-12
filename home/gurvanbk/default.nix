@@ -9,7 +9,6 @@ _: {
     ../../modules/home-manager/dms.nix
     # ../../modules/home-manager/mako.nix # dms does notification server too
     ../../modules/home-manager/alacritty.nix
-    ../../modules/home-manager/hyprlock.nix
     ../../modules/home-manager/nixvim.nix
     # ../../modules/home-manager/kanshi.nix
     ../../modules/home-manager/direnv.nix

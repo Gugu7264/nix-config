@@ -3,19 +3,15 @@ _: {
 
   security.pam = {
     services = {
-      sudo.u2fAuth = true;
+      sudo = {
+        u2fAuth = true;
+        fprintAuth = true;
+      };
       login.u2fAuth = true;
       polkit-1.u2fAuth = true;
       dankshell = {
-        text = ''
-          auth       sufficient     pam_unix.so try_first_pass likeauth nullok
-          auth       sufficient     pam_fprintd.so
-          auth       include        system-auth
-
-          account    include        system-auth
-          password   include        system-auth
-          session    include        system-auth
-        '';
+        u2fAuth = true;
+        fprintAuth = true;
       };
     };
     u2f.settings.cue = true;

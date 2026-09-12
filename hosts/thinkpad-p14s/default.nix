@@ -49,6 +49,9 @@
   users.users.gurvanbk = {
     isNormalUser = true;
     description = "Gurvan BK";
+    home = "/home/gurvanbk";
+    createHome = true;
+    initialHashedPassword = "$y$j9T$OY.zIYCUOcILayqSODHGT/$/./K5Tn3adpfLZkglRvGocfuhGFFkDZ1.EbQl0HSGu0";
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -59,6 +62,7 @@
       "plugdev"
       "libvirtd"
       "uinput"
+      "greeter"
     ];
     shell = pkgs.zsh;
   };

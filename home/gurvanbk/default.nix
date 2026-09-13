@@ -4,7 +4,7 @@ _: {
     ../../modules/home-manager/zsh.nix
     ../../modules/home-manager/waybar.nix
     ../../modules/home-manager/git.nix
-    ../../modules/home-manager/walker.nix
+    # ../../modules/home-manager/walker.nix
     ../../modules/home-manager/niri.nix
     ../../modules/home-manager/dms.nix
     ../../modules/home-manager/dcal.nix

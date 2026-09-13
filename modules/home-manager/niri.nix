@@ -260,10 +260,6 @@
           hotkey-overlay.title = "Open Terminal";
         };
         "Mod+D" = {
-          action = spawn "walker";
-          hotkey-overlay.title = "Application Launcher (Walker)";
-        };
-        "Mod+Space" = {
           action = spawn "dms" "ipc" "call" "spotlight" "toggle";
           hotkey-overlay.title = "DMS Spotlight Launcher";
         };

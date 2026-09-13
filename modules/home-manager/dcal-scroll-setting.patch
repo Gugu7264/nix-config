@@ -1,0 +1,42 @@
+--- a/DcalWidget.qml
++++ b/DcalWidget.qml
+@@ -28,6 +28,7 @@
+     property int lookAheadDays: pluginData.lookAheadDays || 1
+     property int nowWindowMinutes: pluginData.nowWindowMinutes ?? 5
+     property bool showTooltip: pluginData.showTooltip ?? true
++    property bool scrollAnimation: pluginData.scrollAnimation ?? false
+     property real countdownNow: Date.now()
+     property real remainingMs: {
+         if (!eventStart)
+@@ -374,12 +375,14 @@
+                     StyledText {
+                         id: summaryText
+ 
++                        width: root.scrollAnimation ? implicitWidth : summaryClip.width
++                        elide: root.scrollAnimation ? Text.ElideNone : Text.ElideRight
+                         text: root.hasEvent ? root.eventSummary : "No events"
+                         font.pixelSize: Theme.fontSizeSmall
+                         color: Theme.surfaceText
+                     }
+ 
+                     SequentialAnimation {
+-                        running: summaryClip.overflow > 0
++                        running: root.scrollAnimation && summaryClip.overflow > 0
+                         loops: Animation.Infinite
+                         onRunningChanged: if (!running) summaryText.x = 0
+--- a/DcalSettings.qml
++++ b/DcalSettings.qml
+@@ -165,6 +165,13 @@
+     }
+ 
+     ToggleSetting {
++        settingKey: "scrollAnimation"
++        label: "Scroll Animation"
++        description: "Continuously scroll long event names instead of truncating with ellipsis"
++        defaultValue: false
++    }
++
++    ToggleSetting {
+         settingKey: "showTooltip"
+         label: "Hover Tooltip"
+         description: "Show the full event summary in a tooltip when hovering the widget"

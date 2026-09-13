@@ -213,6 +213,7 @@
             { app-id = "nm-connection-editor"; }
             { app-id = "blueman-manager"; }
             { app-id = "wdisplays"; }
+            { app-id = "com.danklinux.dankcalendar"; }
             { title = "^Picture-in-Picture$"; }
             { title = "^Open File$"; }
             { title = "^Save File$"; }
@@ -301,10 +302,6 @@
         "Mod+Shift+W" = {
           action = spawn "dms" "ipc" "call" "window-rules" "toggle";
           hotkey-overlay.title = "DMS Window Rule Helper";
-        };
-        "Ctrl+Shift+R" = {
-          action = spawn "dms" "ipc" "call" "workspace-rename" "open";
-          hotkey-overlay.title = "DMS Rename Workspace";
         };
         "Alt+Space" = {
           action = spawn "dms" "ipc" "call" "spotlight-bar" "toggle";

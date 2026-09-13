@@ -1,5 +1,6 @@
 {
   inputs,
+  pkgs,
   ...
 }:
 {
@@ -11,6 +12,19 @@
   programs.dank-material-shell = {
     enable = true;
 
+    plugins = {
+      dcalUpcoming = {
+        enable = true;
+        src = pkgs.applyPatches {
+          name = "dms-dcal";
+          src = inputs.dms-dcal;
+          patches = [
+            ./dcal-scroll-setting.patch
+          ];
+        };
+      };
+    };
+
     settings = {
       currentThemeName = "purple";
       cornerRadius = 16;
@@ -18,10 +32,42 @@
       closeNiriOverviewOnWindowFocus = true;
       niriOverviewOverlayEnabled = true;
       enableFprint = true;
+      barConfigs = [
+        {
+          id = "default";
+          name = "Main Bar";
+          enabled = true;
+          position = 0;
+          screenPreferences = [ "all" ];
+          showOnLastDisplay = true;
+          leftWidgets = [
+            "launcherButton"
+            "workspaceSwitcher"
+            "focusedWindow"
+          ];
+          centerWidgets = [
+            "music"
+            "clock"
+            "weather"
+            "dcalUpcoming"
+          ];
+          rightWidgets = [
+            "systemTray"
+            "clipboard"
+            "cpuUsage"
+            "memUsage"
+            "notificationButton"
+            "battery"
+            "controlCenterButton"
+          ];
+        }
+      ];
     };
 
     session = {
       isLightMode = true;
+      weatherLocation = "Paris, France";
+      weatherCoordinates = "48.8566,2.3522";
     };
 
     niri = {

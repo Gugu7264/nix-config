@@ -41,6 +41,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    dank-calendar = {
+      url = "github:AvengeMedia/dankcalendar";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    dms-dcal = {
+      url = "github:leoamaro01/dms-dcal";
+      flake = false;
+    };
+
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";

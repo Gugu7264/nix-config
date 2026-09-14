@@ -209,11 +209,6 @@
         # Common utility dialogs open floating
         {
           matches = [
-            { app-id = "pavucontrol"; }
-            { app-id = "nm-connection-editor"; }
-            { app-id = "blueman-manager"; }
-            { app-id = "wdisplays"; }
-            { app-id = "com.danklinux.dankcalendar"; }
             { title = "^Picture-in-Picture$"; }
             { title = "^Open File$"; }
             { title = "^Save File$"; }

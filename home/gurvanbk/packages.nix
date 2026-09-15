@@ -28,6 +28,9 @@
     # '')
   ];
 
-  programs.btop.enable = true;
+  programs.btop = {
+    enable = true;
+    package = pkgs.btop.override { rocmSupport = true; };
+  };
   programs.bat.enable = true;
 }

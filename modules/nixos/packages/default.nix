@@ -18,4 +18,9 @@
 
   # SSHFS / GSSAPI related
   programs.ssh.package = pkgs.openssh_gssapi;
+
+  systemd.tmpfiles.rules = [
+    # make cpu info world-readable for btop
+    "Z /sys/class/powercap/intel-rapl:0/energy_uj 0444 root root - -"
+  ];
 }

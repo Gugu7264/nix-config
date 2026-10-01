@@ -64,31 +64,6 @@
       providers.wl-copy.enable = true;
     };
 
-    lsp.servers = {
-      bashls.enable = true;
-      clangd.enable = true;
-      dockerls.enable = true;
-      jsonls.enable = true;
-      marksman.enable = true;
-      nixd.enable = true;
-      ruff.enable = true;
-      yamlls.enable = true;
-      eslint.enable = true;
-      jdtls = {
-        enable = true;
-        config = {
-          cmd = [
-            "${pkgs.jdt-language-server}/bin/jdtls"
-            "--jvm-arg=-javaagent:${pkgs.lombok}/share/java/lombok.jar"
-          ];
-          settings = {
-            java.format.enabled = false;
-          };
-        };
-      };
-      typst_lsp.enable = true;
-    };
-
     plugins = {
       telescope = {
         enable = true;
@@ -113,7 +88,45 @@
       lualine.enable = true;
 
       # Setup Language Server Protocol (LSP)
-      lspconfig.enable = true;
+      lsp = {
+        enable = true;
+        servers = {
+          bashls.enable = true;
+          clangd = {
+            enable = true;
+            # cmd = [
+            #   "clangd"
+            #   "--background-index"
+            #   "--clang-tidy"
+            #   "--header-insertion=iwyu"
+            #   "--completion-style=detailed"
+            #   "--function-arg-placeholders"
+            #   "--fallback-style=llvm"
+            #   "--query-driver=/nix/store/*-gcc-*/bin/*g++,/nix/store/*-clang-*/bin/*clang++,/nix/store/*-cuda-*/bin/nvcc,/run/current-system/sw/bin/*,nvcc,g++,clang++"
+            # ];
+          };
+          dockerls.enable = true;
+          jsonls.enable = true;
+          marksman.enable = true;
+          nixd.enable = true;
+          ruff.enable = true;
+          yamlls.enable = true;
+          eslint.enable = true;
+          jdtls = {
+            enable = true;
+            cmd = [
+              "${pkgs.jdt-language-server}/bin/jdtls"
+              "--jvm-arg=-javaagent:${pkgs.lombok}/share/java/lombok.jar"
+            ];
+            settings = {
+              java.format.enabled = false;
+            };
+          };
+          tinymist.enable = true;
+        };
+      };
+
+      direnv.enable = true;
 
       # Enable Treesitter for better syntax highlighting
       treesitter = {

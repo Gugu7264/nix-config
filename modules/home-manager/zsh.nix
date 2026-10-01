@@ -1,5 +1,14 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+{
+  imports = [
+    inputs.nix-index-database.homeModules.default
+  ];
+
   home.packages = with pkgs; [
     zsh
     zsh-powerlevel10k
@@ -134,5 +143,8 @@
         enter_accept = false;
       };
     };
+
+    nix-index-database.comma.enable = true;
+    nix-index.enable = true;
   };
 }

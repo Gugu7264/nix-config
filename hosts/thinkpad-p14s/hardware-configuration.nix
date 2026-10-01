@@ -34,51 +34,50 @@
     kernelParams = [ "resume_offset=533760" ];
   };
 
-  fileSystems."/" = {
-    device = "/dev/mapper/cryptroot";
-    fsType = "btrfs";
-    options = [
-      "subvol=@"
-      "compress=zstd:3"
-      "noatime"
-    ];
-  };
-  fileSystems."/home" = {
-    device = "/dev/mapper/cryptroot";
-    fsType = "btrfs";
-    options = [
-      "subvol=@home"
-      "compress=zstd:3"
-      "noatime"
-    ];
-  };
-
-  fileSystems."/nix" = {
-    device = "/dev/mapper/cryptroot";
-    fsType = "btrfs";
-    options = [
-      "subvol=@nix"
-      "compress=zstd:3"
-      "noatime"
-    ];
-  };
-
-  fileSystems."/swap" = {
-    device = "/dev/mapper/cryptroot";
-    fsType = "btrfs";
-    options = [
-      "subvol=@swap"
-      "noatime"
-    ];
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/5397-CD38";
-    fsType = "vfat";
-    options = [
-      "fmask=0022"
-      "dmask=0022"
-    ];
+  fileSystems = {
+    "/" = {
+      device = "/dev/mapper/cryptroot";
+      fsType = "btrfs";
+      options = [
+        "subvol=@"
+        "compress=zstd:3"
+        "noatime"
+      ];
+    };
+    "/home" = {
+      device = "/dev/mapper/cryptroot";
+      fsType = "btrfs";
+      options = [
+        "subvol=@home"
+        "compress=zstd:3"
+        "noatime"
+      ];
+    };
+    "/nix" = {
+      device = "/dev/mapper/cryptroot";
+      fsType = "btrfs";
+      options = [
+        "subvol=@nix"
+        "compress=zstd:3"
+        "noatime"
+      ];
+    };
+    "/swap" = {
+      device = "/dev/mapper/cryptroot";
+      fsType = "btrfs";
+      options = [
+        "subvol=@swap"
+        "noatime"
+      ];
+    };
+    "/boot" = {
+      device = "/dev/disk/by-uuid/5397-CD38";
+      fsType = "vfat";
+      options = [
+        "fmask=0022"
+        "dmask=0022"
+      ];
+    };
   };
 
   swapDevices = [ { device = "/swap/swapfile"; } ];

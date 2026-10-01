@@ -19,7 +19,7 @@
   # SSHFS / GSSAPI related
   programs.ssh.package = pkgs.openssh_gssapi;
   nixpkgs.overlays = [
-    (final: prev: {
+    (_: prev: {
       sshfs = prev.sshfs.override {
         callPackage = prev.newScope {
           openssh = pkgs.openssh_gssapi;

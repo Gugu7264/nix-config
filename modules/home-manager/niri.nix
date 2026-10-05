@@ -77,7 +77,10 @@
 
       input = {
         keyboard = {
-          xkb.layout = "fr";
+          xkb = {
+            layout = "fr,us";
+            options = "grp:alt_shift_toggle";
+          };
           repeat-delay = 600;
           repeat-rate = 25;
         };
@@ -227,6 +230,10 @@
         "Mod+Escape" = {
           action = toggle-keyboard-shortcuts-inhibit;
           hotkey-overlay.title = "Toggle Shortcut Inhibitor";
+        };
+        "Mod+Space" = {
+          action = switch-layout "next";
+          hotkey-overlay.title = "Switch Keyboard Layout (AZERTY / QWERTY)";
         };
         "Mod+Shift+E" = {
           action = quit;
@@ -453,8 +460,13 @@
           hotkey-overlay.title = "Move Column to Monitor Down";
         };
 
-        # === Named Workspaces (AZERTY French Layout) ===
+        # === Named Workspaces (AZERTY & QWERTY dual support) ===
+        # Chat Workspace (² on AZERTY / ` on QWERTY)
         "Mod+twosuperior" = {
+          action = focus-workspace "chat";
+          hotkey-overlay.title = "Focus Chat Workspace";
+        };
+        "Mod+grave" = {
           action = focus-workspace "chat";
           hotkey-overlay.title = "Focus Chat Workspace";
         };
@@ -462,7 +474,17 @@
           action.move-window-to-workspace = "chat";
           hotkey-overlay.title = "Move Window to Chat Workspace";
         };
+        "Mod+Shift+grave" = {
+          action.move-window-to-workspace = "chat";
+          hotkey-overlay.title = "Move Window to Chat Workspace";
+        };
+
+        # Workspace 1 (& on AZERTY / 1 on QWERTY)
         "Mod+ampersand" = {
+          action = focus-workspace "ws-1";
+          hotkey-overlay.title = "Focus Workspace 1";
+        };
+        "Mod+1" = {
           action = focus-workspace "ws-1";
           hotkey-overlay.title = "Focus Workspace 1";
         };
@@ -470,7 +492,17 @@
           action.move-window-to-workspace = "ws-1";
           hotkey-overlay.title = "Move Window to Workspace 1";
         };
+        "Mod+Shift+1" = {
+          action.move-window-to-workspace = "ws-1";
+          hotkey-overlay.title = "Move Window to Workspace 1";
+        };
+
+        # Workspace 2 (é on AZERTY / 2 on QWERTY)
         "Mod+eacute" = {
+          action = focus-workspace "ws-2";
+          hotkey-overlay.title = "Focus Workspace 2";
+        };
+        "Mod+2" = {
           action = focus-workspace "ws-2";
           hotkey-overlay.title = "Focus Workspace 2";
         };
@@ -478,7 +510,17 @@
           action.move-window-to-workspace = "ws-2";
           hotkey-overlay.title = "Move Window to Workspace 2";
         };
+        "Mod+Shift+2" = {
+          action.move-window-to-workspace = "ws-2";
+          hotkey-overlay.title = "Move Window to Workspace 2";
+        };
+
+        # Workspace 3 (" on AZERTY / 3 on QWERTY)
         "Mod+quotedbl" = {
+          action = focus-workspace "ws-3";
+          hotkey-overlay.title = "Focus Workspace 3";
+        };
+        "Mod+3" = {
           action = focus-workspace "ws-3";
           hotkey-overlay.title = "Focus Workspace 3";
         };
@@ -486,11 +528,25 @@
           action.move-window-to-workspace = "ws-3";
           hotkey-overlay.title = "Move Window to Workspace 3";
         };
+        "Mod+Shift+3" = {
+          action.move-window-to-workspace = "ws-3";
+          hotkey-overlay.title = "Move Window to Workspace 3";
+        };
+
+        # Workspace 4 (' on AZERTY / 4 on QWERTY)
         "Mod+apostrophe" = {
           action = focus-workspace "ws-4";
           hotkey-overlay.title = "Focus Workspace 4";
         };
+        "Mod+4" = {
+          action = focus-workspace "ws-4";
+          hotkey-overlay.title = "Focus Workspace 4";
+        };
         "Mod+Shift+apostrophe" = {
+          action.move-window-to-workspace = "ws-4";
+          hotkey-overlay.title = "Move Window to Workspace 4";
+        };
+        "Mod+Shift+4" = {
           action.move-window-to-workspace = "ws-4";
           hotkey-overlay.title = "Move Window to Workspace 4";
         };

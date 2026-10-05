@@ -53,6 +53,7 @@
           ];
           rightWidgets = [
             "systemTray"
+            "keyboard_layout_name"
             "clipboard"
             "cpuUsage"
             "memUsage"

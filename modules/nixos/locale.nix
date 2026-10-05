@@ -12,4 +12,10 @@ _: {
     LC_TELEPHONE = "fr_FR.UTF-8";
     LC_TIME = "fr_FR.UTF-8";
   };
+
+  console.keyMap = "us";
+  services.xserver.xkb = {
+    layout = "fr,us";
+    options = "grp:alt_shift_toggle";
+  };
 }

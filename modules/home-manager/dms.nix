@@ -81,7 +81,7 @@
           # "binds" # Managed in niri.nix for seamless integration with custom keybindings
           "colors"
           "layout"
-          "outputs"
+          # "outputs" # Managed in niri.nix for declarative monitor setup
           "windowrules" # Essential: keeps DMS windows/modals (app-id com.danklinux.dms) floating
           "wpblur" # Blurred overview wallpaper layer
         ];

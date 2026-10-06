@@ -51,29 +51,36 @@
         "ws-4" = { };
       };
 
-      outputs = {
-        "eDP-1" = {
-          scale = 1.0;
-          position = {
-            x = 0;
-            y = 1080;
+      outputs =
+        let
+          externalMonitor = {
+            scale = 1.0;
+            mode = {
+              width = 1920;
+              height = 1080;
+              refresh = 100.0;
+            };
+            position = {
+              x = 0;
+              y = 0;
+            };
+            variable-refresh-rate = "on-demand";
           };
-          variable-refresh-rate = "on-demand";
+        in
+        {
+          "eDP-1" = {
+            scale = 1.0;
+            position = {
+              x = 0;
+              y = 1080;
+            };
+            variable-refresh-rate = "on-demand";
+          };
+          "HDMI-A-1" = externalMonitor;
+          "DP-1" = externalMonitor;
+          "DP-2" = externalMonitor;
+          "DP-3" = externalMonitor;
         };
-        "HDMI-A-1" = {
-          scale = 1.0;
-          mode = {
-            width = 1920;
-            height = 1080;
-            refresh = 100.0;
-          };
-          position = {
-            x = 0;
-            y = 0;
-          };
-          variable-refresh-rate = "on-demand";
-        };
-      };
 
       input = {
         keyboard = {

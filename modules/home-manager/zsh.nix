@@ -15,6 +15,10 @@
     zsh-autosuggestions
     zsh-autocomplete
     bat
+    (runCommand "kubectl-zsh-completion" { } ''
+      mkdir -p $out/share/zsh/site-functions
+      cp ${kubectl}/share/zsh/site-functions/_kubectl $out/share/zsh/site-functions/
+    '')
   ];
 
   home.sessionVariables = {

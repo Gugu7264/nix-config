@@ -89,6 +89,33 @@
         bindkey "^[[1;5D" backward-word
 
         submit() {git tag -m "$1" "$1" && git push && git push origin "$1"}
+        gbgD() {
+          git fetch -p
+
+          # Prune any stale worktree metadata for deleted directories
+          git worktree prune
+
+          # Find all local branches whose upstream is [gone]
+          git for-each-ref --format="%(refname:short) %(upstream:track)" refs/heads |
+            awk '$2 == "[gone]" {print $1}' |
+            while read -r branch; do
+              [[ -z "$branch" ]] && continue
+
+              # Find if this branch is linked to an active worktree path
+              wt_path=$(git worktree list --porcelain | awk -v b="refs/heads/$branch" '
+                /^worktree / { path = substr($0, 10) }
+                /^branch / && $2 == b { print path }
+              ')
+
+              if [[ -n "$wt_path" ]]; then
+                echo "Removing worktree for '$branch' at $wt_path..."
+                git worktree remove --force "$wt_path"
+              fi
+
+              echo "Deleting branch '$branch'..."
+              git branch -D "$branch"
+            done
+        }
 
         export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
@@ -115,7 +142,6 @@
         gpf = "git push --force-with-lease --force-if-includes";
         gf = "git fetch";
         gbgd = "git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d";
-        gbgD = "git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D";
         gb = "git branch";
         grpo = "git remote prune origin";
       };

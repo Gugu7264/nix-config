@@ -35,13 +35,6 @@
     firewall.allowedTCPPorts = [ 631 ];
   };
 
-  boot = {
-    initrd = {
-      systemd.enable = true;
-      luks.fido2Support = false;
-    };
-  };
-
   services.murmur.bonjour = true;
 
   programs.zsh.enable = true;

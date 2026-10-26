@@ -5,7 +5,6 @@
 }:
 {
   home.packages = with pkgs; [
-    nautilus
     xwayland-satellite
     adwaita-icon-theme
     wdisplays # for quick moving screens

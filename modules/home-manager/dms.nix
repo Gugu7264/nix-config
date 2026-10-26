@@ -7,6 +7,7 @@
   imports = [
     inputs.dms.homeModules.dank-material-shell
     inputs.dms.homeModules.niri
+    inputs.dux-files.homeModules.dux-files
   ];
 
   programs.dank-material-shell = {
@@ -87,5 +88,10 @@
         ];
       };
     };
+  };
+
+  programs.dux-files = {
+    enable = true;
+    portal.enable = true;
   };
 }

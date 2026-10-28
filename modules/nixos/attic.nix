@@ -27,29 +27,6 @@
 
       # Only try to download once (default is 5)
       download-attempts = 2;
-
-      # Tell your laptop to prefer using distributed builders over its own CPU
-      builders-use-substitutes = true;
     };
-
-    buildMachines = [
-      {
-        hostName = "10.201.3.146";
-        sshUser = "nix-builder";
-        protocol = "ssh-ng";
-        system = "x86_64-linux";
-        sshKey = "/root/.ssh/id_nix_builder";
-        maxJobs = 8;
-        speedFactor = 2;
-        supportedFeatures = [
-          "nixos-test"
-          "benchmark"
-          "big-parallel"
-          "kvm"
-        ];
-      }
-    ];
-
-    distributedBuilds = true;
   };
 }

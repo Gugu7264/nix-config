@@ -1,10 +1,44 @@
 { lib, ... }:
 {
-  nix.settings = {
-    experimental-features = [
-      "nix-command"
-      "flakes"
+  nix = {
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      # Tell your laptop to prefer using distributed builders over its own CPU
+      builders-use-substitutes = true;
+    };
+
+    buildMachines = [
+      {
+        hostName = "10.201.3.146";
+        sshUser = "nix-builder";
+        protocol = "ssh-ng";
+        system = "x86_64-linux";
+        sshKey = "/root/.ssh/id_nix_builder";
+        maxJobs = 8;
+        speedFactor = 2;
+        supportedFeatures = [
+          "nixos-test"
+          "benchmark"
+          "big-parallel"
+          "kvm"
+        ];
+      }
     ];
+
+    distributedBuilds = true;
+  };
+
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      dates = "weekly";
+      extraArgs = "--keep-since 14d --keep 3";
+    };
+    flake = "/home/gurvanbk/nix-config";
   };
   nixpkgs.config.allowUnfree = false;
   nixpkgs.config.allowUnfreePredicate =

@@ -27,6 +27,7 @@
     ../../modules/nixos/earlyoom.nix
     ../../modules/nixos/desktop.nix
     ../../modules/nixos/1password.nix
+    ../../modules/nixos/ssh.nix
   ];
 
   networking = {

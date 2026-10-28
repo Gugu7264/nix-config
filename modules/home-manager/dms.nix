@@ -20,7 +20,7 @@
           name = "dms-dcal";
           src = inputs.dms-dcal;
           patches = [
-            ./dcal-scroll-setting.patch
+            ./patches/dcal-scroll-setting.patch
           ];
         };
       };

@@ -2,16 +2,12 @@ _: {
   imports = [
     ./packages.nix
     ../../modules/home-manager/zsh.nix
-    ../../modules/home-manager/waybar.nix
     ../../modules/home-manager/git.nix
-    # ../../modules/home-manager/walker.nix
     ../../modules/home-manager/niri.nix
     ../../modules/home-manager/dms.nix
     ../../modules/home-manager/dcal.nix
-    # ../../modules/home-manager/mako.nix # dms does notification server too
     ../../modules/home-manager/alacritty.nix
     ../../modules/home-manager/nixvim.nix
-    # ../../modules/home-manager/kanshi.nix
     ../../modules/home-manager/direnv.nix
     ../../modules/home-manager/zen-browser.nix
     ../../modules/home-manager/hyprpolkitagent.nix

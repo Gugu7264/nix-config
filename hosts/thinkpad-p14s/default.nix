@@ -64,5 +64,10 @@
   };
   zramSwap.enable = true;
 
+  # Make CPU energy info world-readable for btop
+  systemd.tmpfiles.rules = [
+    "Z /sys/class/powercap/intel-rapl:0/energy_uj 0444 root root - -"
+  ];
+
   system.stateVersion = "25.05";
 }

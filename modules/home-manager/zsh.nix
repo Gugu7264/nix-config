@@ -106,12 +106,16 @@
 
         export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
+        # Enable completion for alias k=kubectl
+        (( $+commands[kubectl] )) && compdef _kubectl k
+
         [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
       '';
 
       shellAliases = {
         # cat = "bat -P";
         v = "nvim";
+        k = "kubectl";
 
         # Git aliases
         ga = "git add";

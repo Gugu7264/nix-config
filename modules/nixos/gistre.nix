@@ -13,7 +13,7 @@
     # stm32cubemx # The standalone ST configurator
 
     # INFO8
-    # kubectl
+    # kubectl is enabled in packages/dev.nix
     # lens
 
     # VHDL

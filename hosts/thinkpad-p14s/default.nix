@@ -35,8 +35,6 @@
     firewall.allowedTCPPorts = [ 631 ];
   };
 
-  services.murmur.bonjour = true;
-
   programs.zsh.enable = true;
 
   users.users.gurvanbk = {
@@ -52,9 +50,7 @@
       "video"
       "docker"
       "dialout"
-      "plugdev"
       "libvirtd"
-      "uinput"
       "greeter"
     ];
     shell = pkgs.zsh;

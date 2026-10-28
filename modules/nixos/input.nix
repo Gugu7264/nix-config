@@ -6,7 +6,7 @@
   boot.kernelModules = [ "uinput" ];
 
   services.udev.extraRules = ''
-    KERNEL=="uinput", GROUP="uinput", MODE="0660"
+    KERNEL=="uinput", GROUP="input", MODE="0660"
   '';
 
   # For lan-mouse / libei

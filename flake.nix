@@ -80,7 +80,7 @@
                 useUserPackages = true;
                 backupFileExtension = "backup";
                 extraSpecialArgs = { inherit inputs; };
-                users.gurvanbk = import ./home/gurvanbk/default.nix;
+                users.gurvanbk = ./home/gurvanbk/default.nix;
               };
             }
             inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen5

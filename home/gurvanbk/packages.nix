@@ -6,6 +6,7 @@
     discord
     slack
     chromium
+    trilium-desktop
     # Not really needed anymore (for now, vim >>)
     # vscode
     # jetbrains.idea

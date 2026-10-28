@@ -22,7 +22,5 @@ _: {
 
   home.enableNixpkgsReleaseCheck = false;
 
-  programs.nixvim.enable = true;
-
   programs.home-manager.enable = true;
 }

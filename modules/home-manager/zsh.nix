@@ -9,10 +9,6 @@
     inputs.nix-index-database.homeModules.default
   ];
 
-  home.packages = with pkgs; [
-    zsh-autocomplete
-  ];
-
   home.sessionVariables = {
     EDITOR = "nvim";
   };

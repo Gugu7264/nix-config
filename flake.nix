@@ -94,20 +94,30 @@
         name = "nix-config-dev";
         packages = with nixpkgs.legacyPackages.x86_64-linux; [
           git
+          statix
+          deadnix
         ];
         shellHook = ''
-                    if [ -d .git ] && [ ! -f .git/hooks/pre-commit ]; then
-                      mkdir -p .git/hooks
-                      cat << 'EOF' > .git/hooks/pre-commit
+          if [ -d .git ]; then
+            mkdir -p .git/hooks
+            cat << 'EOF' > .git/hooks/pre-commit
           #!/usr/bin/env bash
           set -e
           echo "Running statix and deadnix checks..."
-          nix run nixpkgs#statix -- check .
-          nix run nixpkgs#deadnix -- .
+          if command -v statix >/dev/null 2>&1; then
+            statix check .
+          else
+            nix run nixpkgs#statix -- check .
+          fi
+
+          if command -v deadnix >/dev/null 2>&1; then
+            deadnix .
+          else
+            nix run nixpkgs#deadnix -- .
+          fi
           EOF
-                      chmod +x .git/hooks/pre-commit
-                      echo "Installed pre-commit hook in .git/hooks/pre-commit"
-                    fi
+            chmod +x .git/hooks/pre-commit
+          fi
         '';
       };
     };

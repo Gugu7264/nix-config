@@ -12,7 +12,7 @@
 
     buildMachines = [
       {
-        hostName = "10.201.3.146";
+        hostName = "100.68.87.6"; # tailscale IP
         sshUser = "nix-builder";
         protocol = "ssh-ng";
         system = "x86_64-linux";

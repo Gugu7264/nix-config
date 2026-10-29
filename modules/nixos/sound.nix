@@ -1,6 +1,5 @@
 _: {
   security.rtkit.enable = true;
-  hardware.enableRedistributableFirmware = true;
 
   services.pipewire = {
     enable = true;

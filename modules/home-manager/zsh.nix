@@ -9,18 +9,6 @@
     inputs.nix-index-database.homeModules.default
   ];
 
-  home.packages = with pkgs; [
-    zsh
-    zsh-powerlevel10k
-    zsh-autosuggestions
-    zsh-autocomplete
-    bat
-    (runCommand "kubectl-zsh-completion" { } ''
-      mkdir -p $out/share/zsh/site-functions
-      cp ${kubectl}/share/zsh/site-functions/_kubectl $out/share/zsh/site-functions/
-    '')
-  ];
-
   home.sessionVariables = {
     EDITOR = "nvim";
   };
@@ -57,11 +45,6 @@
           name = "powerlevel10k";
           src = pkgs.zsh-powerlevel10k;
           file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-        }
-        {
-          name = "zsh-autosuggestions";
-          src = pkgs.zsh-autosuggestions;
-          file = "share/zsh-autosuggestions/zsh-autosuggestions.zsh";
         }
       ];
 
@@ -119,12 +102,16 @@
 
         export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
+        # Enable completion for alias k=kubectl
+        (( $+commands[kubectl] )) && compdef _kubectl k
+
         [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
       '';
 
       shellAliases = {
         # cat = "bat -P";
         v = "nvim";
+        k = "kubectl";
 
         # Git aliases
         ga = "git add";

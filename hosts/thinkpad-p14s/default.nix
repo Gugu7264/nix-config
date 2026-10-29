@@ -27,6 +27,7 @@
     ../../modules/nixos/earlyoom.nix
     ../../modules/nixos/desktop.nix
     ../../modules/nixos/1password.nix
+    ../../modules/nixos/ssh.nix
   ];
 
   networking = {
@@ -34,8 +35,6 @@
     networkmanager.enable = true;
     firewall.allowedTCPPorts = [ 631 ];
   };
-
-  services.murmur.bonjour = true;
 
   programs.zsh.enable = true;
 
@@ -52,21 +51,25 @@
       "video"
       "docker"
       "dialout"
-      "plugdev"
       "libvirtd"
-      "uinput"
       "greeter"
     ];
     shell = pkgs.zsh;
   };
 
   nixpkgs.hostPlatform = "x86_64-linux";
+  hardware.enableRedistributableFirmware = true;
 
   nix.settings = {
     max-jobs = "auto";
     cores = 0;
   };
   zramSwap.enable = true;
+
+  # Make CPU energy info world-readable for btop
+  systemd.tmpfiles.rules = [
+    "Z /sys/class/powercap/intel-rapl:0/energy_uj 0444 root root - -"
+  ];
 
   system.stateVersion = "25.05";
 }

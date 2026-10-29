@@ -2,12 +2,17 @@
 {
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gnome
       pkgs.xdg-desktop-portal-gtk
     ];
-    config.common.default = "*";
+    config = {
+      niri.default = [
+        "gnome"
+        "gtk"
+      ];
+      common.default = "*";
+    };
   };
 
   services.dbus.enable = true;

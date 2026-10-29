@@ -6,9 +6,9 @@ _: {
     extraArgs = [
       "-g"
       "--prefer"
-      "'^(.*/)?(java|node|clion|electron)$'"
+      "^(.*/)?(java|node|clion|electron)$"
       "--avoid"
-      "'^(.*/)?(sshd|systemd|X|wayland|niri)$'"
+      "^(.*/)?(sshd|systemd|X|wayland|niri)$"
     ];
   };
 }

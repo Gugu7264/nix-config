@@ -98,7 +98,7 @@
           deadnix
         ];
         shellHook = ''
-          if [ -d .git ]; then
+          if [ -d .git ] && [ ! -f .git/hooks/pre-commit ]; then
             mkdir -p .git/hooks
             cat << 'EOF' > .git/hooks/pre-commit
           #!/usr/bin/env bash

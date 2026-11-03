@@ -160,7 +160,7 @@
       markdown-preview = {
         enable = true;
         settings = {
-          auto_start = 1;
+          auto_start = 0;
           auto_close = 1;
           theme = "light";
         };

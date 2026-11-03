@@ -100,7 +100,7 @@
             done
         }
 
-        export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+        export SSH_AUTH_SOCK="''${XDG_RUNTIME_DIR:-/run/user/$UID}/gnupg/S.gpg-agent.ssh"
 
         # Enable completion for alias k=kubectl
         (( $+commands[kubectl] )) && compdef _kubectl k
@@ -128,7 +128,7 @@
         gp = "git push";
         gpf = "git push --force-with-lease --force-if-includes";
         gf = "git fetch";
-        gbgd = "git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d";
+        gbgd = "git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs -r git branch -d";
         gb = "git branch";
         grpo = "git remote prune origin";
       };

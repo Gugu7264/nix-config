@@ -20,7 +20,6 @@
     ../../modules/nixos/avahi.nix
     ../../modules/nixos/niri.nix
     ../../modules/nixos/gistre.nix
-    ../../modules/nixos/attic.nix
     ../../modules/nixos/security.nix
     ../../modules/nixos/power.nix
     ../../modules/nixos/input.nix
@@ -33,7 +32,6 @@
   networking = {
     hostName = "thinkpad-p14s";
     networkmanager.enable = true;
-    firewall.allowedTCPPorts = [ 631 ];
   };
 
   programs.zsh.enable = true;
@@ -60,10 +58,6 @@
   nixpkgs.hostPlatform = "x86_64-linux";
   hardware.enableRedistributableFirmware = true;
 
-  nix.settings = {
-    max-jobs = "auto";
-    cores = 0;
-  };
   zramSwap.enable = true;
 
   # Make CPU energy info world-readable for btop

@@ -12,7 +12,7 @@ let
     nativeBuildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
       wrapProgram $out/bin/agy \
-        --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.glab ]}
+        --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.glab pkgs.nodejs ]}
     '';
   };
 in

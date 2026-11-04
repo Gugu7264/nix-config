@@ -10,6 +10,7 @@ _: {
     ../../modules/home-manager/nixvim.nix
     ../../modules/home-manager/direnv.nix
     ../../modules/home-manager/zen-browser.nix
+    ../../modules/home-manager/mime.nix
     ../../modules/home-manager/hyprpolkitagent.nix
     ../../modules/home-manager/antigravity.nix
   ];

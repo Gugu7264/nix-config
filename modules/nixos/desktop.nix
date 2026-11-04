@@ -1,16 +1,23 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   xdg.portal = {
     enable = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gnome
       pkgs.xdg-desktop-portal-gtk
+      inputs.dux-files.packages.${pkgs.stdenv.hostPlatform.system}.dux-files
     ];
     config = {
-      niri.default = [
-        "gnome"
-        "gtk"
-      ];
+      niri = {
+        default = [
+          "gnome"
+          "gtk"
+        ];
+        "org.freedesktop.impl.portal.FileChooser" = [
+          "dfiles"
+          "gtk"
+        ];
+      };
       common.default = "*";
     };
   };

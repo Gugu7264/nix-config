@@ -92,6 +92,10 @@
 
   programs.dux-files = {
     enable = true;
-    portal.enable = true;
+    portal = {
+      enable = true;
+      preferred = true;
+      desktop = "niri";
+    };
   };
 }

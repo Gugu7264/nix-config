@@ -88,6 +88,7 @@
       "lens-desktop"
       "quartus-prime-lite"
       "quartus-prime-lite-unwrapped"
+      "claude-code"
     ];
 
   programs.nix-ld.enable = true;

@@ -13,6 +13,7 @@ _: {
     ../../modules/home-manager/mime.nix
     ../../modules/home-manager/hyprpolkitagent.nix
     ../../modules/home-manager/antigravity.nix
+    ../../modules/home-manager/claude-code.nix
   ];
 
   home = {

@@ -66,4 +66,6 @@
   ];
 
   system.stateVersion = "25.05";
+
+  services.ratbagd.enable = true;
 }

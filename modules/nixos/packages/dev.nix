@@ -9,6 +9,7 @@
     cmake
     pkg-config
     python3
+    go
     kubectl
   ];
 }
